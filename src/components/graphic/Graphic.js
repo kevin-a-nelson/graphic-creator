@@ -1,13 +1,11 @@
 import React from 'react'
-import Background from '../../assets/Backgrounds/DerbyCityDuel.png';
-import Draggable from 'react-draggable';
 
 import './graphic.scss'
 
 export default class Graphic extends React.Component {
     render() {
 
-        const { backgroundImage, bracket } = this.props;
+        const { backgroundImage, bracket, logo } = this.props;
 
         return (
             <div className="graphic-container">
@@ -15,6 +13,12 @@ export default class Graphic extends React.Component {
                     <div className="bracket">
                         <div className="bracket-img-container">
                             <img src={bracket} alt="bracket" />
+                        </div>
+                    </div>
+
+                    <div className="logo">
+                        <div className="logo-img-container">
+                            <img src={logo} alt="bracket" />
                         </div>
                     </div>
                 </div>

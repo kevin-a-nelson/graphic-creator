@@ -1,12 +1,11 @@
 import React from 'react';
 import Select from 'react-dropdown-select';
 
-import backgroundImageOptions from '../../dropDowns/backgroundImageOptions'
-import bracketOptions from '../../dropDowns/bracketOptions'
-
+import backgroundImageOptions from '../../options/backgroundOptions'
+import bracketOptions from '../../options/bracketOptions'
+import logoOptions from '../../options/logoOptions'
 
 import './sidebar.scss'
-
 
 class SideBar extends React.Component {
     constructor(props) {
@@ -26,6 +25,11 @@ class SideBar extends React.Component {
         this.props.setBracketImage(newBracket);
     }
 
+    onLogoChange(option) {
+        let newLogo = option[0].value;
+        this.props.setLogoImage(newLogo);
+    }
+
     render() {
         return (
             <div className="sidebar-container">
@@ -40,6 +44,12 @@ class SideBar extends React.Component {
                     <Select
                         className="select"
                         options={bracketOptions}
+                        onChange={this.onBracketChange.bind(this)}
+                    />
+                    <p>Logo</p>
+                    <Select
+                        className="select"
+                        options={logoOptions}
                         onChange={this.onBracketChange.bind(this)}
                     />
                 </div>
