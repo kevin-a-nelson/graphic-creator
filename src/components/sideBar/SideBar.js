@@ -2,6 +2,8 @@ import React from 'react';
 import Select from 'react-dropdown-select';
 import Selectors from '../selectors/Selectors'
 
+import './sidebar.scss'
+
 
 class SideBar extends React.Component {
     constructor(props) {
@@ -13,11 +15,13 @@ class SideBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <Selectors
-                    dropDowns={this.props.dropDowns}
-                >
-                </Selectors>
+            <div className="sidebar-container">
+                <div className="sidebar">
+                    <Selectors
+                        dropDowns={this.props.dropDowns}
+                    >
+                    </Selectors>
+                </div>
             </div>
         )
     }

@@ -1,6 +1,8 @@
 import React from 'react';
 import Select from 'react-dropdown-select';
 
+import './selectors.scss'
+
 class Selectors extends React.Component {
     constructor(props) {
         super(props);
@@ -11,15 +13,14 @@ class Selectors extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="selectors">
                 {
                     this.props.dropDowns.map((dropDown, idx) => {
                         return (
-                            <div
-                                key={idx}
-                            >
+                            <div key={idx} >
                                 <p>{dropDown.title}</p>
                                 <Select
+                                    className="select"
                                     options={dropDown.dropDown}
                                 ></Select>
                             </div>

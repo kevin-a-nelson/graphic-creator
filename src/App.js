@@ -3,6 +3,7 @@ import './App.css';
 import Background from "./assets/Backgrounds/SpaceCityCollision.png"
 import SideBar from './components/sideBar/SideBar'
 import dropDowns from './dropDowns/dropDowns'
+import Graphic from './components/graphic/Graphic'
 
 class App extends React.Component {
 
@@ -15,11 +16,14 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-        <h1>Hello?</h1>
-        <SideBar
-          dropDowns={dropDowns}
-        />
+      <div className="app-container">
+        <div className="app">
+          <SideBar
+            dropDowns={dropDowns}
+          />
+          <Graphic
+          />
+        </div>
       </div>
     );
   }
