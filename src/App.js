@@ -14,6 +14,10 @@ class App extends React.Component {
       backgroundImage: Background,
       bracket: Bracket,
       logo: Logo,
+      // width: 960,
+      // height: 540,
+      width: 480,
+      height: 270,
     }
   }
 
@@ -35,6 +39,8 @@ class App extends React.Component {
             backgroundImage={this.state.backgroundImage}
             bracket={this.state.bracket}
             logo={this.state.logo}
+            width={this.state.width}
+            height={this.state.height}
           />
         </div>
       </div>
