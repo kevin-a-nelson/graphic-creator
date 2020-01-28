@@ -1,5 +1,6 @@
 import React from 'react'
 import Background from '../../assets/Backgrounds/DerbyCityDuel.png';
+import Draggable from 'react-draggable';
 
 import './graphic.scss'
 
@@ -10,10 +11,12 @@ export default class Graphic extends React.Component {
 
         return (
             <div className="graphic-container">
-                <div className="graphic"
-                    style={{ backgroundImage: `url(${backgroundImage})` }}
-                >
-                </div>
+                <Draggable>
+                    <div className="graphic" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
+                </Draggable>
+                <Draggable>
+                    <div className="bracket"></div>
+                </Draggable>
             </div>
         )
     }

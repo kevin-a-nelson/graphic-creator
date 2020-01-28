@@ -1,6 +1,9 @@
 import React from 'react';
 import Select from 'react-dropdown-select';
-import Selectors from '../selectors/Selectors'
+
+import backgroundImageOptions from '../../dropDowns/backgroundImageOptions'
+import bracketOptions from '../../dropDowns/bracketOptions'
+
 
 import './sidebar.scss'
 
@@ -13,15 +16,27 @@ class SideBar extends React.Component {
         }
     }
 
+    onBackgroundChange(option) {
+        let newBackground = option[0].value;
+        this.props.setBackgroundImage(newBackground);
+    }
+
     render() {
         return (
             <div className="sidebar-container">
                 <div className="sidebar">
-                    <Selectors
-                        dropDowns={this.props.dropDowns}
-                        setBackgroundImage={this.props.setBackgroundImage}
+                    <p>Background Image</p>
+                    <Select
+                        className="select"
+                        options={backgroundImageOptions}
+                        onChange={this.onBackgroundChange.bind(this)}
                     >
-                    </Selectors>
+                    </Select>
+                    <p>Bracket</p>
+                    <Select
+                        className="select"
+                        options={bracketOptions}
+                    ></Select>
                 </div>
             </div>
         )
