@@ -7,7 +7,6 @@ export default class Graphic extends React.Component {
         return (
             <div className="graphic-container">
                 <div className="graphic">
-                    <h1>Hello World</h1>
                 </div>
             </div>
         )
