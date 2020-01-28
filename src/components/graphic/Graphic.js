@@ -7,16 +7,17 @@ import './graphic.scss'
 export default class Graphic extends React.Component {
     render() {
 
-        const { backgroundImage } = this.props;
+        const { backgroundImage, bracket } = this.props;
 
         return (
             <div className="graphic-container">
-                <Draggable>
-                    <div className="graphic" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
-                </Draggable>
-                <Draggable>
-                    <div className="bracket"></div>
-                </Draggable>
+                <div className="graphic" style={{ backgroundImage: `url(${backgroundImage})` }}>
+                    <div className="bracket">
+                        <div className="bracket-img-container">
+                            <img src={bracket} alt="bracket" />
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

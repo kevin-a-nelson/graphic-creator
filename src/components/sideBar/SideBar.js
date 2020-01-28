@@ -21,6 +21,11 @@ class SideBar extends React.Component {
         this.props.setBackgroundImage(newBackground);
     }
 
+    onBracketChange(option) {
+        let newBracket = option[0].value;
+        this.props.setBracketImage(newBracket);
+    }
+
     render() {
         return (
             <div className="sidebar-container">
@@ -30,13 +35,13 @@ class SideBar extends React.Component {
                         className="select"
                         options={backgroundImageOptions}
                         onChange={this.onBackgroundChange.bind(this)}
-                    >
-                    </Select>
+                    />
                     <p>Bracket</p>
                     <Select
                         className="select"
                         options={bracketOptions}
-                    ></Select>
+                        onChange={this.onBracketChange.bind(this)}
+                    />
                 </div>
             </div>
         )
