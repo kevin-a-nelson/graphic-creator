@@ -10,18 +10,23 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      background: Background
+      backgroundImage: Background
     }
   }
 
   render() {
+
+    const setBackgroundImage = (background) => { this.setState({ backgroundImage: background }) }
+
     return (
       <div className="app-container">
         <div className="app">
           <SideBar
             dropDowns={dropDowns}
+            setBackgroundImage={setBackgroundImage}
           />
           <Graphic
+            backgroundImage={this.state.backgroundImage}
           />
         </div>
       </div>

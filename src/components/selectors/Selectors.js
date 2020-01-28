@@ -11,6 +11,11 @@ class Selectors extends React.Component {
         }
     }
 
+    handleChange(value) {
+        this.props.setBackgroundImage(value[0].value);
+        // console.log(value[0].value)
+    }
+
     render() {
         return (
             <div className="selectors">
@@ -22,6 +27,7 @@ class Selectors extends React.Component {
                                 <Select
                                     className="select"
                                     options={dropDown.dropDown}
+                                    onChange={this.handleChange.bind(this)}
                                 ></Select>
                             </div>
                         )

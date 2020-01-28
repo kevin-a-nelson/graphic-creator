@@ -19,6 +19,7 @@ class SideBar extends React.Component {
                 <div className="sidebar">
                     <Selectors
                         dropDowns={this.props.dropDowns}
+                        setBackgroundImage={this.props.setBackgroundImage}
                     >
                     </Selectors>
                 </div>
