@@ -1,4 +1,5 @@
 import React from 'react'
+import Draggable from 'react-draggable'
 
 import './graphic.scss'
 
@@ -9,20 +10,12 @@ export default class Graphic extends React.Component {
 
         return (
             <div className="graphic-container">
-                <div className="graphic" style={{ backgroundImage: `url(${backgroundImage})` }}>
-                    <div className="bracket">
-                        <div className="bracket-img-container">
-                            <img src={bracket} alt="bracket" />
-                        </div>
-                    </div>
-
-                    <div className="logo">
-                        <div className="logo-img-container">
-                            <img src={logo} alt="bracket" />
-                        </div>
-                    </div>
+                <div className="graphic">
+                    <div className="background" style={{ backgroundImage: `url(${backgroundImage})` }}></div>
+                    <div className="bracket" style={{ backgroundImage: `url(${bracket})` }}></div>
+                    <div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

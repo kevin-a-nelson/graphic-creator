@@ -2,6 +2,7 @@ import React, { setState } from 'react';
 import './App.css';
 import Background from "./assets/Backgrounds/SpaceCityCollision.png"
 import Bracket from "./assets/Brackets/8TeamBracket.png"
+import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
 
@@ -12,7 +13,7 @@ class App extends React.Component {
     this.state = {
       backgroundImage: Background,
       bracket: Bracket,
-      logo: '',
+      logo: Logo,
     }
   }
 
@@ -33,6 +34,7 @@ class App extends React.Component {
           <Graphic
             backgroundImage={this.state.backgroundImage}
             bracket={this.state.bracket}
+            logo={this.state.logo}
           />
         </div>
       </div>

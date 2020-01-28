@@ -28,6 +28,7 @@ class SideBar extends React.Component {
     onLogoChange(option) {
         let newLogo = option[0].value;
         this.props.setLogoImage(newLogo);
+        console.log(newLogo);
     }
 
     render() {
@@ -50,7 +51,7 @@ class SideBar extends React.Component {
                     <Select
                         className="select"
                         options={logoOptions}
-                        onChange={this.onBracketChange.bind(this)}
+                        onChange={this.onLogoChange.bind(this)}
                     />
                 </div>
             </div>
