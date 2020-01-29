@@ -37,7 +37,6 @@ class SideBar extends React.Component {
         this.setState({ size: value })
         this.props.setWidth(960 * (value / 1000));
         this.props.setHeight(540 * (value / 1000));
-
         console.log()
     }
 

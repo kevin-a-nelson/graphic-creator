@@ -10,7 +10,15 @@ export default class Graphic extends React.Component {
 
         const Background = () => { return (<div className="background expand" style={{ backgroundImage: `url(${backgroundImage})` }}></div>) }
         const Bracket = () => { return (<div className="bracket expand" style={{ backgroundImage: `url(${bracket})` }}></div>) }
-        const Logo = () => { return (<div className="logo" style={{ backgroundImage: `url(${logo})` }}></div>) }
+        const Logo = () => {
+            return (
+                <div className="logo" style={{ width: `${width / 6}px`, right: `${width / 100}px`, top: `${width / 100}px` }}>
+                    <div className="img-container">
+                        <img src={logo} alt="logo" />
+                    </div>
+                </div >
+            )
+        }
         const Title = () => {
             return (
                 <div className="title">
@@ -38,8 +46,8 @@ export default class Graphic extends React.Component {
         }
 
         return (
-            <div className="graphic-container">
-                <div className="graphic large"
+            <div className="graphic-container" >
+                <div className="graphic"
                     style={{ width: `${width}px`, height: `${height}px`, fontSize: `${width / 67}px` }}
                 >
                     <Title />
