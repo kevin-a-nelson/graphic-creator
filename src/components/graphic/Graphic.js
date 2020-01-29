@@ -16,15 +16,21 @@ export default class Graphic extends React.Component {
 
         const Background = () => { return (<div className="background expand" style={{ backgroundImage: `url(${backgroundImage})` }}></div>) }
         const Bracket = () => {
-            let tempBracket = "/static/media/16TeamBracket.12461966.png"
             return (
-                <div className="bracket expand" style={{ backgroundImage: `url(${tempBracket})` }}></div>
+                <div className="bracket expand" style={{ backgroundImage: `url(${bracket})` }}></div>
             )
         }
 
         const Logo = () => {
+
+            const logoStyle = {
+                width: `${width / 6}px`,
+                right: `${width / 85}px`,
+                bottom: `${width / 8}px`
+            }
+
             return (
-                <div className="logo" style={{ width: `${width / 6}px`, right: `${width / 85}px`, top: `${width / 85}px` }}>
+                <div className="logo" style={logoStyle}>
                     <div className="img-container">
                         <img src={logo} alt="logo" />
                     </div>
@@ -44,9 +50,7 @@ export default class Graphic extends React.Component {
 
         const TeamNames = () => {
 
-            let tempTeams = teams['16-teams'];
-
-            console.log(bracket)
+            let tempTeams = teams['8-teams'];
 
             if (bracket.includes("16Team")) {
                 tempTeams = teams['16-teams'];
