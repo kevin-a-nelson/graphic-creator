@@ -2,6 +2,7 @@ import React from 'react'
 import EditableLabel from 'react-editable-label';
 import './graphic.scss'
 import teams from '../../static/teamPositions'
+import Draggable from 'react-draggable'
 
 export default class Graphic extends React.Component {
     render() {
@@ -25,16 +26,18 @@ export default class Graphic extends React.Component {
 
             const logoStyle = {
                 width: `${width / 6}px`,
-                right: `${width / 85}px`,
-                bottom: `${width / 8}px`
+                right: `${width / 25}px`,
+                bottom: `${width / 7}px`
             }
 
             return (
-                <div className="logo" style={logoStyle}>
-                    <div className="img-container">
-                        <img src={logo} alt="logo" />
+                <Draggable>
+                    <div className="logo" style={logoStyle}>
+                        <div className="img-container">
+                            <img src={logo} alt="logo" />
+                        </div>
                     </div>
-                </div >
+                </Draggable>
             )
         }
         const Title = () => {
@@ -44,10 +47,12 @@ export default class Graphic extends React.Component {
                         { marginTop: `${width / 100}px` }
                     }
                 >
-                    <EditableLabel
-                        initialValue={'TITLE'}
-                        save={value => { console.log(`Saving '${value}'`); }}
-                    />
+                    <i>
+                        <EditableLabel
+                            initialValue={"19's - 20's EXAMPLE BRACKET"}
+                            save={value => { console.log(`Saving '${value}'`); }}
+                        />
+                    </i>
                 </div >
             )
         }
