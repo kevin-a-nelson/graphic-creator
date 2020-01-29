@@ -6,10 +6,22 @@ import teams from '../../static/teamPositions'
 export default class Graphic extends React.Component {
     render() {
 
-        const { backgroundImage, bracket, logo, width, height } = this.props;
+        const {
+            backgroundImage,
+            bracket,
+            logo,
+            width,
+            height
+        } = this.props;
 
         const Background = () => { return (<div className="background expand" style={{ backgroundImage: `url(${backgroundImage})` }}></div>) }
-        const Bracket = () => { return (<div className="bracket expand" style={{ backgroundImage: `url(${bracket})` }}></div>) }
+        const Bracket = () => {
+            let tempBracket = "/static/media/16TeamBracket.12461966.png"
+            return (
+                <div className="bracket expand" style={{ backgroundImage: `url(${tempBracket})` }}></div>
+            )
+        }
+
         const Logo = () => {
             return (
                 <div className="logo" style={{ width: `${width / 6}px`, right: `${width / 85}px`, top: `${width / 85}px` }}>
@@ -32,7 +44,13 @@ export default class Graphic extends React.Component {
 
         const TeamNames = () => {
 
-            let tempTeams = teams['eightTeams'];
+            let tempTeams = teams['16-teams'];
+
+            console.log(bracket)
+
+            if (bracket.includes("16Team")) {
+                tempTeams = teams['16-teams'];
+            }
 
             return (
                 tempTeams.map((team, idx) => {

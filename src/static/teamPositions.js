@@ -1,5 +1,5 @@
 export default {
-    "eightTeams": [
+    "8-teams": [
         // First Round
         { top: "19%", left: "5%", name: "1st Seed" },
         { top: "29%", left: "5%", name: "8th Seed" },
@@ -22,7 +22,45 @@ export default {
     ],
     "16-teams": [
         // First Round
-        { top: "19%", left: "50px", name: "1st Seed" },
+        { top: "4%", left: "7%", name: "1st Seed" },
+        { top: "10%", left: "7%", name: "16th Seed" },
+        { top: "16%", left: "7%", name: "2nd Seed" },
+        { top: "22%", left: "7%", name: "15th Seed" },
+        { top: "27.3%", left: "7%", name: "3rd Seed" },
+        { top: "33%", left: "7%", name: "14th Seed" },
+        { top: "38.5%", left: "7%", name: "4th Seed" },
+        { top: "43.8%", left: "7%", name: "13th Seed" },
+        { top: "49.8%", left: "7%", name: "5th Seed" },
+        { top: "55.8%", left: "7%", name: "12th Seed" },
+        { top: "61.1%", left: "7%", name: "6th Seed" },
+        { top: "66.7%", left: "7%", name: "11th Seed" },
+        { top: "72%", left: "7%", name: "7th Seed" },
+        { top: "78%", left: "7%", name: "10th Seed" },
+        { top: "83.7%", left: "7%", name: "9th Seed" },
+        { top: "89%", left: "7%", name: "8th Seed" },
+        // Second Round
+        { top: "7.5%", left: "24%", name: "Winner of Match" },
+        { top: "19%", left: "24%", name: "Winner of Match" },
+        { top: "30%", left: "24%", name: "Winner of Match" },
+        { top: "41%", left: "23%", name: "Winner of Match" },
+        { top: "52%", left: "23%", name: "Winner of Match" },
+        { top: "63.5%", left: "22%", name: "Winner of Match" },
+        { top: "75%", left: "22%", name: "Winner of Match" },
+        { top: "86%", left: "21%", name: "Winner of Match" },
+        // Third Round
+        { top: "12.4%", left: "41%", name: "Winner of Match" },
+        { top: "35%", left: "41%", name: "Winner of Match" },
+        { top: "58%", left: "40%", name: "Winner of Match" },
+        { top: "80.5%", left: "39%", name: "Winner of Match" },
+        // Fourth Round
+        { top: "24%", left: "56%", name: "Winner of Match" },
+        { top: "69%", left: "56%", name: "Winner of Match" },
+        // Champion
+        { top: "47%", left: "73%", name: "Winner of Match" },
+    ],
+    "32-teams": [
+        // First Round
+        { top: "2%", left: "50px", name: "1st Seed" },
         { top: "155px", left: "50px", name: "8th Seed" },
         { top: "210px", left: "45px", name: "2nd Seed" },
         { top: "265px", left: "45px", name: "7th Seed" },
