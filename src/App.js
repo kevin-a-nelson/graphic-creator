@@ -14,10 +14,8 @@ class App extends React.Component {
       backgroundImage: Background,
       bracket: Bracket,
       logo: Logo,
-      // width: 960,
-      // height: 540,
-      width: 480,
-      height: 270,
+      width: 960,
+      height: 540,
     }
   }
 
@@ -26,6 +24,8 @@ class App extends React.Component {
     const setBackgroundImage = (backgroundImage) => { this.setState({ backgroundImage }) }
     const setBracketImage = (bracket) => { this.setState({ bracket }) }
     const setLogoImage = (logo) => { this.setState({ logo }) }
+    const setWidth = (width) => { this.setState({ width }) }
+    const setHeight = (height) => { this.setState({ height }) }
 
     return (
       <div className="app-container">
@@ -34,6 +34,8 @@ class App extends React.Component {
             setBackgroundImage={setBackgroundImage}
             setBracketImage={setBracketImage}
             setLogoImage={setLogoImage}
+            setWidth={setWidth}
+            setHeight={setHeight}
           />
           <Graphic
             backgroundImage={this.state.backgroundImage}
