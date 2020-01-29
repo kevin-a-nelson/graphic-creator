@@ -39,12 +39,16 @@ export default class Graphic extends React.Component {
         }
         const Title = () => {
             return (
-                <div className="title">
+                <div className="title"
+                    style={
+                        { marginTop: `${width / 100}px` }
+                    }
+                >
                     <EditableLabel
-                        initialValue={'Title'}
+                        initialValue={'TITLE'}
                         save={value => { console.log(`Saving '${value}'`); }}
                     />
-                </div>
+                </div >
             )
         }
 

@@ -1,28 +1,28 @@
 export default {
     "8-teams": [
         // First Round
-        { top: "19%", left: "5%", name: "1st Seed" },
-        { top: "29%", left: "5%", name: "8th Seed" },
-        { top: "39%", left: "5%", name: "2nd Seed" },
-        { top: "49%", left: "5%", name: "7th Seed" },
-        { top: "59%", left: "5%", name: "3rd Seed" },
-        { top: "68.8%", left: "5%", name: "6th Seed" },
-        { top: "78%", left: "5%", name: "4th Seed" },
-        { top: "88%", left: "5%", name: "5th Seed" },
+        { top: "19%", left: "5%", name: "FIRST SEED" },
+        { top: "29%", left: "5%", name: "SECOND SEED" },
+        { top: "39%", left: "5%", name: "THIRD SEED" },
+        { top: "49%", left: "5%", name: "FOURTH SEED" },
+        { top: "59%", left: "5%", name: "FIFTH SEED" },
+        { top: "68.8%", left: "5%", name: "SIXTH SEED" },
+        { top: "78%", left: "5%", name: "SEVENTH SEED" },
+        { top: "88%", left: "5%", name: "EIGHT SEED" },
         // Second Round
-        { top: "24%", left: "29%", name: "Winner of Match One" },
-        { top: "44%", left: "29%", name: "Winner of Match Two" },
-        { top: "63%", left: "29%", name: "Winner of Match Three" },
-        { top: "83%", left: "29%", name: "Winner of Match Four" },
+        { top: "24%", left: "29%", name: "MATCH ONE WINNER" },
+        { top: "44%", left: "29%", name: "MATCH TWO WINNER" },
+        { top: "63%", left: "29%", name: "MATCH THREE WINNER" },
+        { top: "83%", left: "29%", name: "MATCH FOUR WINNER" },
         // Third Round
-        { top: "34%", left: "52%", name: "Winner of Match 5" },
-        { top: "73%", left: "52%", name: "Winner of Match 6" },
+        { top: "34%", left: "52%", name: "MATCH FIVE WINNER" },
+        { top: "73%", left: "52%", name: "MATCH SIX WINNER" },
         // Champion!
-        { top: "53.5%", left: "75%", name: "Champions" }
+        { top: "53.5%", left: "75%", name: "CHAMPIONS" }
     ],
     "16-teams": [
         // First Round
-        { top: "4%", left: "7%", name: "1st Seed" },
+        { top: "4%", left: "7%", name: "1st Seed Team" },
         { top: "10%", left: "7%", name: "16th Seed" },
         { top: "16%", left: "7%", name: "2nd Seed" },
         { top: "22%", left: "7%", name: "15th Seed" },
