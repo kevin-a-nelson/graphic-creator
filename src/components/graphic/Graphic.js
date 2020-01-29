@@ -12,7 +12,7 @@ export default class Graphic extends React.Component {
         const Bracket = () => { return (<div className="bracket expand" style={{ backgroundImage: `url(${bracket})` }}></div>) }
         const Logo = () => {
             return (
-                <div className="logo" style={{ width: `${width / 6}px`, right: `${width / 100}px`, top: `${width / 100}px` }}>
+                <div className="logo" style={{ width: `${width / 6}px`, right: `${width / 85}px`, top: `${width / 85}px` }}>
                     <div className="img-container">
                         <img src={logo} alt="logo" />
                     </div>
@@ -23,7 +23,7 @@ export default class Graphic extends React.Component {
             return (
                 <div className="title">
                     <EditableLabel
-                        initialValue={'World'}
+                        initialValue={'Title'}
                         save={value => { console.log(`Saving '${value}'`); }}
                     />
                 </div>
@@ -36,11 +36,18 @@ export default class Graphic extends React.Component {
 
             return (
                 tempTeams.map((team, idx) => {
-                    return <div className="team-name" style={{
-                        top: team.top,
-                        left: team.left,
-                        zIndex: 10 + idx
-                    }}> {team.name}</div>
+                    return (
+                        <div className="team-name" style={{
+                            top: team.top,
+                            left: team.left,
+                            zIndex: 10 + idx
+                        }}>
+                            <EditableLabel
+                                initialValue={team.name}
+                                save={value => { console.log(`Saving '${value}'`); }}
+                            />
+                        </div>
+                    )
                 })
             )
         }

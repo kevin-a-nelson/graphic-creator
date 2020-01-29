@@ -1,6 +1,5 @@
 import React from 'react';
 import Select from 'react-dropdown-select';
-
 import backgroundImageOptions from '../../options/backgroundOptions'
 import bracketOptions from '../../options/bracketOptions'
 import logoOptions from '../../options/logoOptions'
