@@ -3,6 +3,7 @@ import Select from 'react-dropdown-select';
 import backgroundImageOptions from '../../options/backgroundOptions'
 import bracketOptions from '../../options/bracketOptions'
 import logoOptions from '../../options/logoOptions'
+import eventOptions from '../../options/eventOptions'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css'
 
@@ -32,11 +33,15 @@ class SideBar extends React.Component {
         console.log(newLogo);
     }
 
-    handleSizeChange(value) {
+    onSizeChange(value) {
         this.setState({ size: value })
         this.props.setWidth(960 * (value / 1000));
         this.props.setHeight(540 * (value / 1000));
         console.log()
+    }
+
+    onEventChange(value) {
+        console.log(value)
     }
 
     render() {
@@ -62,12 +67,18 @@ class SideBar extends React.Component {
                         options={logoOptions}
                         onChange={this.onLogoChange.bind(this)}
                     />
+                    <p>Events</p>
+                    <Select
+                        className="select"
+                        options={eventOptions}
+                        onChange={this.onEventChange.bind(this)}
+                    />
                     <p>Size</p>
                     <InputRange
                         maxValue={1000}
                         minValue={1}
                         value={this.state.size}
-                        onChange={this.handleSizeChange.bind(this)}
+                        onChange={this.onSizeChange.bind(this)}
                     />
                 </div>
             </div>
