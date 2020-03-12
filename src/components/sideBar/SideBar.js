@@ -1,7 +1,6 @@
 import React from 'react';
 import Select from 'react-dropdown-select';
 import backgroundImageOptions from '../../options/backgroundOptions'
-import bracketOptions from '../../options/bracketOptions'
 import logoOptions from '../../options/logoOptions'
 import eventOptions from '../../options/eventOptions'
 import InputRange from 'react-input-range';
@@ -54,12 +53,6 @@ class SideBar extends React.Component {
                         className="select"
                         options={backgroundImageOptions}
                         onChange={this.onBackgroundChange.bind(this)}
-                    />
-                    <p>Bracket</p>
-                    <Select
-                        className="select"
-                        options={bracketOptions}
-                        onChange={this.onBracketChange.bind(this)}
                     />
                     <p>Logo</p>
                     <Select
