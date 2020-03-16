@@ -16,12 +16,19 @@ export default class Graphic extends React.Component {
             width,
             height,
             eventId,
+            teams
         } = this.props;
+
+        const graphicStyle = {
+            width: `${width}px`,
+            height: `${height}px`,
+            fontSize: `${width / 67}px`
+        }
 
         return (
             <div className="graphic-container" >
                 <div className="graphic"
-                    style={{ width: `${width}px`, height: `${height}px`, fontSize: `${width / 67}px` }}
+                    style={graphicStyle}
                 >
                     <Title
                         width={width}
@@ -36,6 +43,7 @@ export default class Graphic extends React.Component {
                     <TeamNames
                         bracket={bracket}
                         eventId={eventId}
+                        teams={teams}
                     />
                     <Background
                         backgroundImage={backgroundImage}

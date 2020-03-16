@@ -5,6 +5,7 @@ import Bracket from "./assets/Brackets/8TeamBracket.png"
 import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
+import teams from './static/teamPositions'
 
 class App extends React.Component {
 
@@ -17,6 +18,7 @@ class App extends React.Component {
       width: 960,
       height: 540,
       eventId: 0,
+      teams: teams['8-teams'],
     }
   }
 
@@ -28,6 +30,7 @@ class App extends React.Component {
     const setWidth = (width) => { this.setState({ width }) }
     const setHeight = (height) => { this.setState({ height }) }
     const setEventId = (eventId) => { this.setState({ eventId }) }
+    const setTeams = (teams) => { this.setState({ teams }) }
 
     return (
       <div className="app-container">
@@ -39,9 +42,12 @@ class App extends React.Component {
             setWidth={setWidth}
             setHeight={setHeight}
             setEventId={setEventId}
+            setTeams={setTeams}
+            teams={this.state.teams}
           />
           <Graphic
             eventId={this.state.eventId}
+            teams={this.state.teams}
             backgroundImage={this.state.backgroundImage}
             bracket={this.state.bracket}
             logo={this.state.logo}

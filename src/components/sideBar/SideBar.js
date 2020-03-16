@@ -3,6 +3,7 @@ import Select from 'react-dropdown-select';
 import backgroundImageOptions from '../../options/backgroundOptions'
 import logoOptions from '../../options/logoOptions'
 import eventOptions from '../../options/eventOptions'
+import bracketOptions from '../../options/bracketOptions'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css'
 import axiosInstance from '../../AxiosInstance'
@@ -41,8 +42,22 @@ class SideBar extends React.Component {
         console.log()
     }
 
-    onEventChange(option) {
+    async onEventChange(option) {
+
+        const tempTeams = this.props.teams
+
+        console.log(tempTeams)
+
         const eventId = option[0].value;
+
+        await axiosInstance.get(`exposure/events/${eventId}/teams?brackets=true`)
+            .then(response => {
+                response.data.forEach((team, idx) => {
+                    tempTeams[idx].name = team.Name
+                })
+            })
+            .catch(error => console.log(error))
+        this.props.setTeams(tempTeams)
         this.props.setEventId(eventId)
     }
 
@@ -61,6 +76,12 @@ class SideBar extends React.Component {
                         className="select"
                         options={logoOptions}
                         onChange={this.onLogoChange.bind(this)}
+                    />
+                    <p>Bracket Type</p>
+                    <Select
+                        className="select"
+                        options={bracketOptions}
+                        onChange={this.onBracketChange.bind(this)}
                     />
                     <p>Events</p>
                     <Select

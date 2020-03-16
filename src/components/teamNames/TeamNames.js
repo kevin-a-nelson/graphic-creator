@@ -1,34 +1,33 @@
-import React from 'react'
-import teams from '../../static/teamPositions'
+import React, { useState } from 'react'
 import EditableLabel from 'react-editable-label'
+import axiosInstance from '../../AxiosInstance'
 
 
-const TeamNames = (props) => {
+class TeamNames extends React.Component {
 
-    const { bracket } = props
 
-    let tempTeams = teams['8-teams'];
-
-    if (bracket.includes("16Team")) {
-        tempTeams = teams['16-teams'];
+    render() {
+        const teamNameStyle = (team) => {
+            return {
+                top: team.top,
+                left: team.left,
+                zIndex: 10,
+            }
+        }
+        return (
+            this.props.teams.map((team, idx) => {
+                return (
+                    <div className="team-name" style={teamNameStyle(team)}>
+                        {team.name}
+                        {/* <EditableLabel
+                            initialValue={team.name}
+                            save={value => { console.log(`Saving '${value}'`); }}
+                        /> */}
+                    </div >
+                )
+            })
+        )
     }
-
-    return (
-        tempTeams.map((team, idx) => {
-            return (
-                <div className="team-name" style={{
-                    top: team.top,
-                    left: team.left,
-                    zIndex: 10 + idx
-                }}>
-                    <EditableLabel
-                        initialValue={team.name}
-                        save={value => { console.log(`Saving '${value}'`); }}
-                    />
-                </div>
-            )
-        })
-    )
 }
 
 export default TeamNames
