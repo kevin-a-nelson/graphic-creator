@@ -1,0 +1,11 @@
+.logo {
+    background: blue;
+    z-index: 4;
+
+    .img-container {
+        img {
+            width: 100%;
+            height: auto;
+        }
+    }
+}
