@@ -1,22 +1,20 @@
 import React from 'react'
-import EditableLabel from 'react-editable-label'
+
+import "./title.scss"
 
 const Title = (props) => {
 
-    const { width } = props
+    const { width, title } = props
+
+    const titleStyle = {
+        marginTop: `${width / 50}px`
+    }
 
     return (
         <div className="title"
-            style={
-                { marginTop: `${width / 100}px` }
-            }
+            style={titleStyle}
         >
-            <i>
-                <EditableLabel
-                    initialValue={"19's - 20's EXAMPLE BRACKET"}
-                    save={value => { console.log(`Saving '${value}'`); }}
-                />
-            </i>
+            {title}
         </div >
     )
 }

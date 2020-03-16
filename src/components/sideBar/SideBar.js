@@ -44,21 +44,21 @@ class SideBar extends React.Component {
 
     async onEventChange(option) {
 
-        const tempTeams = this.props.teams
-
-        console.log(tempTeams)
-
+        const newTeams = this.props.teams
         const eventId = option[0].value;
+        const eventName = option[0].label;
 
-        await axiosInstance.get(`exposure/events/${eventId}/teams?brackets=true`)
+        await axiosInstance.get(`exposure/events/${eventId}/games/playoffs`)
             .then(response => {
-                response.data.forEach((team, idx) => {
-                    tempTeams[idx].name = team.Name
+                response.data.forEach((game, idx) => {
+                    newTeams[idx].name = game.HomeTeam.Name
+                    newTeams[idx + 1].name = game.AwayTeam.Name
                 })
             })
             .catch(error => console.log(error))
-        this.props.setTeams(tempTeams)
-        this.props.setEventId(eventId)
+
+        this.props.setTitle(eventName)
+        this.props.setTeams(newTeams)
     }
 
     render() {

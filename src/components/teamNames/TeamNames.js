@@ -1,6 +1,4 @@
 import React, { useState } from 'react'
-import EditableLabel from 'react-editable-label'
-import axiosInstance from '../../AxiosInstance'
 
 
 class TeamNames extends React.Component {
@@ -15,14 +13,10 @@ class TeamNames extends React.Component {
             }
         }
         return (
-            this.props.teams.map((team, idx) => {
+            this.props.teams.map((team) => {
                 return (
                     <div className="team-name" style={teamNameStyle(team)}>
                         {team.name}
-                        {/* <EditableLabel
-                            initialValue={team.name}
-                            save={value => { console.log(`Saving '${value}'`); }}
-                        /> */}
                     </div >
                 )
             })

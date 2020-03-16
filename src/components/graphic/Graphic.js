@@ -8,7 +8,6 @@ import TeamNames from '../teamNames/TeamNames'
 
 export default class Graphic extends React.Component {
     render() {
-
         const {
             backgroundImage,
             bracket,
@@ -16,13 +15,14 @@ export default class Graphic extends React.Component {
             width,
             height,
             eventId,
-            teams
+            teams,
+            title
         } = this.props;
 
         const graphicStyle = {
             width: `${width}px`,
             height: `${height}px`,
-            fontSize: `${width / 67}px`
+            fontSize: `${width / 70}px`
         }
 
         return (
@@ -32,6 +32,7 @@ export default class Graphic extends React.Component {
                 >
                     <Title
                         width={width}
+                        title={title}
                     />
                     <Bracket
                         bracket={bracket}
@@ -49,7 +50,7 @@ export default class Graphic extends React.Component {
                         backgroundImage={backgroundImage}
                     />
                 </div>
-            </div >
+            </div>
         )
     }
 }

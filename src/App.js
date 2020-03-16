@@ -1,7 +1,7 @@
 import React, { setState } from 'react';
 import './App.css';
 import Background from "./assets/Backgrounds/SpaceCityCollision.png"
-import Bracket from "./assets/Brackets/8TeamBracket.png"
+import Bracket from "./assets/Brackets/4TeamBracket.png"
 import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
@@ -18,7 +18,8 @@ class App extends React.Component {
       width: 960,
       height: 540,
       eventId: 0,
-      teams: teams['8-teams'],
+      title: "19's - 20's Example Bracket",
+      teams: teams['4-teams'],
     }
   }
 
@@ -31,6 +32,7 @@ class App extends React.Component {
     const setHeight = (height) => { this.setState({ height }) }
     const setEventId = (eventId) => { this.setState({ eventId }) }
     const setTeams = (teams) => { this.setState({ teams }) }
+    const setTitle = (title) => { this.setState({ title }) }
 
     return (
       <div className="app-container">
@@ -44,6 +46,7 @@ class App extends React.Component {
             setEventId={setEventId}
             setTeams={setTeams}
             teams={this.state.teams}
+            setTitle={setTitle}
           />
           <Graphic
             eventId={this.state.eventId}
@@ -53,6 +56,7 @@ class App extends React.Component {
             logo={this.state.logo}
             width={this.state.width}
             height={this.state.height}
+            title={this.state.title}
           />
         </div>
       </div>
