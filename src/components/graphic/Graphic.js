@@ -3,6 +3,8 @@ import EditableLabel from 'react-editable-label';
 import './graphic.scss'
 import teams from '../../static/teamPositions'
 import Draggable from 'react-draggable'
+import Bracket from '../bracket/Bracket'
+import Background from '../background/Background'
 
 export default class Graphic extends React.Component {
     render() {
@@ -12,15 +14,9 @@ export default class Graphic extends React.Component {
             bracket,
             logo,
             width,
-            height
+            height,
+            eventId,
         } = this.props;
-
-        const Background = () => { return (<div className="background expand" style={{ backgroundImage: `url(${backgroundImage})` }}></div>) }
-        const Bracket = () => {
-            return (
-                <div className="bracket expand" style={{ backgroundImage: `url(${bracket})` }}></div>
-            )
-        }
 
         const Logo = () => {
 
@@ -40,6 +36,7 @@ export default class Graphic extends React.Component {
                 </Draggable>
             )
         }
+
         const Title = () => {
             return (
                 <div className="title"
@@ -88,11 +85,16 @@ export default class Graphic extends React.Component {
                 <div className="graphic"
                     style={{ width: `${width}px`, height: `${height}px`, fontSize: `${width / 67}px` }}
                 >
+                    <h1>{eventId}</h1>
                     <Title />
-                    <Bracket />
+                    <Bracket
+                        bracket={bracket}
+                    />
                     <Logo />
                     <TeamNames />
-                    <Background />
+                    <Background
+                        backgroundImage={backgroundImage}
+                    />
                 </div>
             </div >
         )

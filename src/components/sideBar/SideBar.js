@@ -5,6 +5,7 @@ import logoOptions from '../../options/logoOptions'
 import eventOptions from '../../options/eventOptions'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css'
+import axiosInstance from '../../AxiosInstance'
 
 import './sidebar.scss'
 
@@ -27,6 +28,7 @@ class SideBar extends React.Component {
     }
 
     onLogoChange(option) {
+
         let newLogo = option[0].value;
         this.props.setLogoImage(newLogo);
         console.log(newLogo);
@@ -39,12 +41,12 @@ class SideBar extends React.Component {
         console.log()
     }
 
-    onEventChange(value) {
-        console.log(value)
+    onEventChange(option) {
+        const eventId = option[0].value;
+        this.props.setEventId(eventId)
     }
 
     render() {
-
         return (
             <div className="sidebar-container">
                 <div className="sidebar">

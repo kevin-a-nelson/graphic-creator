@@ -16,6 +16,7 @@ class App extends React.Component {
       logo: Logo,
       width: 960,
       height: 540,
+      eventId: 0,
     }
   }
 
@@ -26,6 +27,7 @@ class App extends React.Component {
     const setLogoImage = (logo) => { this.setState({ logo }) }
     const setWidth = (width) => { this.setState({ width }) }
     const setHeight = (height) => { this.setState({ height }) }
+    const setEventId = (eventId) => { this.setState({ eventId }) }
 
     return (
       <div className="app-container">
@@ -36,8 +38,10 @@ class App extends React.Component {
             setLogoImage={setLogoImage}
             setWidth={setWidth}
             setHeight={setHeight}
+            setEventId={setEventId}
           />
           <Graphic
+            eventId={this.state.eventId}
             backgroundImage={this.state.backgroundImage}
             bracket={this.state.bracket}
             logo={this.state.logo}
