@@ -7,3 +7,10 @@ body {
 .app {
   display: flex;
 }
+
+.right-container {
+  margin: 0px auto;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+}

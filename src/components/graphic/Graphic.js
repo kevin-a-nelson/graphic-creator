@@ -26,8 +26,8 @@ export default class Graphic extends React.Component {
         }
 
         return (
-            <div className="graphic-container" >
-                <div className="graphic"
+            <div className="center-vertically">
+                <div id="graphic"
                     style={graphicStyle}
                 >
                     <Title

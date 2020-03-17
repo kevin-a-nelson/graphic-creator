@@ -6,6 +6,7 @@ import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
 import teams from './static/teamPositions'
+import htmlToImage from 'html-to-image';
 
 class App extends React.Component {
 
@@ -34,8 +35,19 @@ class App extends React.Component {
     const setTeams = (teams) => { this.setState({ teams }) }
     const setTitle = (title) => { this.setState({ title }) }
 
+    function onDownload() {
+      htmlToImage.toJpeg(document.getElementById('graphic'), { quality: 0.95 })
+        .then(function (dataUrl) {
+          var link = document.createElement('a');
+          link.download = 'my-image-name.jpeg';
+          link.href = dataUrl;
+          link.click();
+        });
+    }
+
     return (
       <div className="app-container">
+        <button onClick={onDownload}>Download</button>
         <div className="app">
           <SideBar
             setBackgroundImage={setBackgroundImage}

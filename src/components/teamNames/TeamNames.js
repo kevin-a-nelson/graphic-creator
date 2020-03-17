@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "./teamNames.scss"
 
 
 class TeamNames extends React.Component {
