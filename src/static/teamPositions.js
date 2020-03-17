@@ -4,12 +4,12 @@ export default {
         { top: "25%", left: "10%", name: "FIRST SEED" },
         { top: "45%", left: "9%", name: "SECOND SEED" },
         { top: "64%", left: "8%", name: "THIRD SEED" },
-        { top: "83.5%", left: "7.5%", name: "FOURTH SEED" },
+        { top: "83.5%", left: "7.5%", name: "Forth Seed" },
         // Second Round
-        { top: "35%", left: "32%", name: "FIFTH SEED" },
-        { top: "74%", left: "30%", name: "SIXTH SEED" },
+        { top: "35%", left: "32%", name: "Winner of Game 1" },
+        { top: "74%", left: "30%", name: "Winner of Game 2" },
         // Champion!
-        { top: "55%", left: "53%", name: "EIGHT SEED" },
+        { top: "55%", left: "53%", name: "Champions" },
     ],
     "8-teams": [
         // First Round

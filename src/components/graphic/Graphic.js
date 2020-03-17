@@ -10,7 +10,7 @@ export default class Graphic extends React.Component {
     render() {
         const {
             backgroundImage,
-            bracket,
+            bracketType,
             logo,
             width,
             height,
@@ -35,15 +35,13 @@ export default class Graphic extends React.Component {
                         title={title}
                     />
                     <Bracket
-                        bracket={bracket}
+                        bracketType={bracketType}
                     />
                     <Logo
                         width={width}
                         logo={logo}
                     />
                     <TeamNames
-                        bracket={bracket}
-                        eventId={eventId}
                         teams={teams}
                     />
                     <Background

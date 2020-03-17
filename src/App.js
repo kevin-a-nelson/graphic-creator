@@ -6,7 +6,7 @@ import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
 import teams from './static/teamPositions'
-import htmlToImage from 'html-to-image';
+// import htmlToImage from 'html-to-image';
 
 class App extends React.Component {
 
@@ -14,7 +14,8 @@ class App extends React.Component {
     super(props);
     this.state = {
       backgroundImage: Background,
-      bracket: Bracket,
+      bracketType: Bracket,
+      bracketNumber: 1,
       logo: Logo,
       width: 960,
       height: 540,
@@ -27,27 +28,17 @@ class App extends React.Component {
   render() {
 
     const setBackgroundImage = (backgroundImage) => { this.setState({ backgroundImage }) }
-    const setBracketImage = (bracket) => { this.setState({ bracket }) }
+    const setBracketImage = (bracketType) => { this.setState({ bracketType }) }
     const setLogoImage = (logo) => { this.setState({ logo }) }
     const setWidth = (width) => { this.setState({ width }) }
     const setHeight = (height) => { this.setState({ height }) }
     const setEventId = (eventId) => { this.setState({ eventId }) }
     const setTeams = (teams) => { this.setState({ teams }) }
     const setTitle = (title) => { this.setState({ title }) }
-
-    function onDownload() {
-      htmlToImage.toJpeg(document.getElementById('graphic'), { quality: 0.95 })
-        .then(function (dataUrl) {
-          var link = document.createElement('a');
-          link.download = 'my-image-name.jpeg';
-          link.href = dataUrl;
-          link.click();
-        });
-    }
+    const setBracketNumber = (bracketNumber) => { this.setState({ bracketNumber }) }
 
     return (
       <div className="app-container">
-        <button onClick={onDownload}>Download</button>
         <div className="app">
           <SideBar
             setBackgroundImage={setBackgroundImage}
@@ -56,15 +47,20 @@ class App extends React.Component {
             setWidth={setWidth}
             setHeight={setHeight}
             setEventId={setEventId}
-            setTeams={setTeams}
-            teams={this.state.teams}
+            eventId={this.state.eventId}
             setTitle={setTitle}
+            title={this.state.title}
+            teams={this.state.teams}
+            setTeams={setTeams}
+            bracketNumber={this.state.bracketNumber}
+            setBracketNumber={setBracketNumber}
+
           />
           <Graphic
             eventId={this.state.eventId}
             teams={this.state.teams}
             backgroundImage={this.state.backgroundImage}
-            bracket={this.state.bracket}
+            bracketType={this.state.bracketType}
             logo={this.state.logo}
             width={this.state.width}
             height={this.state.height}

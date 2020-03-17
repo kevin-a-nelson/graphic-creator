@@ -4,10 +4,10 @@ import "./bracket.scss"
 
 const Bracket = (props) => {
 
-    const { bracket } = props
+    const { bracketType } = props
 
     return (
-        <div className="bracket expand" style={{ backgroundImage: `url(${bracket})` }}></div>
+        <div className="bracket expand" style={{ backgroundImage: `url(${bracketType})` }}></div>
     )
 }
 
