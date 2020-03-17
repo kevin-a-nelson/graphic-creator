@@ -72,11 +72,26 @@ class SideBar extends React.Component {
         this.getNewTeams()
     }
 
-    onDownload(title) {
+    bracketName() {
+        return [
+            'Championship Bracket',
+            'Silver Bracket',
+            'Bronze Bracket'
+        ][this.props.bracketNumber - 1]
+    }
+
+    onDownload(title, bracketNumber) {
+
+        let bracketName = [
+            'Championship Bracket',
+            'Silver Bracket',
+            'Bronze Bracket'
+        ][bracketNumber]
+
         htmlToImage.toJpeg(document.getElementById('graphic'), { quality: 0.95 })
             .then(function (dataUrl) {
                 var link = document.createElement('a');
-                link.download = `${title}.jpeg`;
+                link.download = `${title} - ${bracketName}.jpeg`;
                 link.href = dataUrl;
                 link.click();
             });
@@ -98,12 +113,12 @@ class SideBar extends React.Component {
                         options={logoOptions}
                         onChange={this.onLogoChange.bind(this)}
                     />
-                    <p>Bracket Type</p>
+                    {/* <p>Bracket Type</p>
                     <Select
                         className="select"
                         options={bracketOptions}
                         onChange={this.onBracketChange.bind(this)}
-                    />
+                    /> */}
                     <p>Events</p>
                     <Select
                         className="select"
@@ -116,14 +131,14 @@ class SideBar extends React.Component {
                         options={bracketNumberOptions}
                         onChange={this.onBracketNumberChange.bind(this)}
                     />
-                    <p>Size</p>
+                    {/* <p>Size</p>
                     <InputRange
                         maxValue={1000}
                         minValue={1}
                         value={this.state.size}
                         onChange={this.onSizeChange.bind(this)}
-                    />
-                    <button className="btn-download" onClick={() => this.onDownload(this.props.title)}>Download</button>
+                    /> */}
+                    <button className="btn-download" onClick={() => this.onDownload(this.props.title, this.props.bracketNumber)}>Download</button>
                 </div>
             </div>
         )
