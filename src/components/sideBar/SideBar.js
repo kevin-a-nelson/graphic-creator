@@ -113,24 +113,28 @@ class SideBar extends React.Component {
                         options={logoOptions}
                         onChange={this.onLogoChange.bind(this)}
                     />
-                    {/* <p>Bracket Type</p>
+                    {/* 
+                    <p>Bracket Type</p>
                     <Select
                         className="select"
                         options={bracketOptions}
                         onChange={this.onBracketChange.bind(this)}
-                    /> */}
+                    />
+                     */}
+
+                    <p>Bracket Type</p>
+                    <Select
+                        className="select"
+                        options={bracketNumberOptions}
+                        onChange={this.onBracketNumberChange.bind(this)}
+                    />
+
                     <p>Events</p>
                     <Select
                         className="select"
                         options={eventOptions}
                         onChange={this.onEventChange.bind(this)}
                     />
-                    {/* <p>Bracket Number</p>
-                    <Select
-                        className="select"
-                        options={bracketNumberOptions}
-                        onChange={this.onBracketNumberChange.bind(this)}
-                    /> */}
                     {/* <p>Size</p>
                     <InputRange
                         maxValue={1000}
