@@ -122,7 +122,7 @@ class SideBar extends React.Component {
                     />
                      */}
 
-                    <p>Bracket Type</p>
+                    <p>Bracket Name</p>
                     <Select
                         className="select"
                         options={bracketNumberOptions}
