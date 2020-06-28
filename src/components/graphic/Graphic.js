@@ -22,7 +22,7 @@ export default class Graphic extends React.Component {
         const graphicStyle = {
             width: `${width}px`,
             height: `${height}px`,
-            fontSize: `${width / 70}px`
+            fontSize: '50px'
         }
 
         return (
@@ -30,10 +30,12 @@ export default class Graphic extends React.Component {
                 <div id="graphic"
                     style={graphicStyle}
                 >
+                    {/* 
                     <Title
                         width={width}
                         title={title}
                     />
+                     */}
                     <Bracket
                         bracketType={bracketType}
                     />

@@ -1,12 +1,11 @@
 import React, { setState } from 'react';
 import './App.css';
 import Background from "./assets/Backgrounds/SpaceCityCollision.png"
-import Bracket from "./assets/Brackets/4TeamBracket.png"
+import Bracket from "./assets/Brackets/TenPools.png"
 import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
 import teams from './static/teamPositions'
-// import htmlToImage from 'html-to-image';
 
 class App extends React.Component {
 
@@ -20,8 +19,8 @@ class App extends React.Component {
       width: 960,
       height: 540,
       eventId: 0,
-      title: "19's - 20's Example Bracket",
-      teams: teams['4-teams'],
+      title: "17U Pool 1 Standings",
+      teams: teams['TenPools'],
     }
   }
 
@@ -54,7 +53,6 @@ class App extends React.Component {
             setTeams={setTeams}
             bracketNumber={this.state.bracketNumber}
             setBracketNumber={setBracketNumber}
-
           />
           <Graphic
             eventId={this.state.eventId}

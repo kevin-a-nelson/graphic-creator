@@ -8,9 +8,9 @@ const Logo = (props) => {
     const { width, logo } = props
 
     const logoStyle = {
-        width: `${width / 6}px`,
-        right: `${width / 25}px`,
-        bottom: `${width / 7}px`
+        width: `${width / 5.4}px`,
+        right: `${width / 1.26}px`,
+        bottom: `${width / 1.85}px`
     }
 
     return (

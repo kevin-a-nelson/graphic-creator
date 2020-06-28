@@ -1,15 +1,75 @@
+
+const teamName = {
+    fontWeight: 600,
+    fontSize: '1em',
+    color: 'white',
+    position: 'absolute',
+    textTransform: 'uppercase',
+    fontStyle: 'italic'
+}
+
+const title = {
+    fontSize: '1.12em',
+    fontWeight: 900,
+    color: 'white',
+    textTransform: 'uppercase'
+}
+
+const teamPlace = {
+    fontSize: '0.8em',
+    color: 'white',
+}
+
+const teamRecord = {
+    fontSize: '0.5em',
+    color: 'white',
+}
+
+const tenPools = {
+    teamNames: {
+        fontSize: '0.3em',
+        color: 'white',
+    }
+}
+
 export default {
+    "TenPools": [
+        // Pool 2
+        { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        { top: "29%", left: "25%", name: "Team Name 2", style: tenPools.teamNames },
+    ],
+    "SinglePool": [
+        // First Round
+        { top: "8%", left: "25%", name: "17U Pool 1 Standings", style: title },
+        { top: "29%", left: "25%", name: "Pool 1", style: title },
+        // First Seed
+        { top: "44%", left: "23.5%", name: "1st", style: teamPlace },
+        { top: "46%", left: "31%", name: "0-1", style: teamRecord },
+        { top: "43%", left: "42%", name: "First Seed", style: teamName },
+        // Second Seed
+        { top: "55.5%", left: "23.5%", name: "1st", style: teamPlace },
+        { top: "55.5%", left: "31%", name: "0-1", style: teamRecord },
+        { top: "54.5%", left: "42%", name: "Second Seed", style: teamName },
+        // Third Seed
+        { top: "66%", left: "23.5%", name: "1st", style: teamPlace },
+        { top: "66%", left: "31%", name: "0-1", style: teamRecord },
+        { top: "66%", left: "42%", name: "Third Seed", style: teamName },
+        // Fourth Seed
+        { top: "77.5%", left: "23.5%", name: "1st", style: teamPlace },
+        { top: "77.5%", left: "31%", name: "0-1", style: teamRecord },
+        { top: "77.5%", left: "42%", name: "Fourth Seed", style: teamName },
+    ],
     "4-teams": [
         // First Round
-        { top: "25%", left: "10%", name: "FIRST SEED" },
-        { top: "45%", left: "9%", name: "SECOND SEED" },
-        { top: "64%", left: "8%", name: "THIRD SEED" },
-        { top: "83.5%", left: "7.5%", name: "Forth Seed" },
+        { top: "25%", left: "9.2%", name: "First Seed" },
+        { top: "44.5%", left: "8.7%", name: "Second Seed" },
+        { top: "64%", left: "8%", name: "Third Seed" },
+        { top: "83.5%", left: "7.5%", name: "Fifth Seed" },
         // Second Round
         { top: "35%", left: "32%", name: "Winner of Game 1" },
-        { top: "74%", left: "30%", name: "Winner of Game 2" },
+        { top: "74%", left: "31%", name: "Winner of Game 2" },
         // Champion!
-        { top: "55%", left: "53%", name: "Champions" },
+        { top: "54%", left: "53%", name: "Champions" },
     ],
     "8-teams": [
         // First Round
