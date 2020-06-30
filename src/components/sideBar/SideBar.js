@@ -43,7 +43,7 @@ class SideBar extends React.Component {
 
     async getNewTeams() {
         const newTeams = this.props.teams
-        await axiosInstance.get(`exposure/events/${this.props.eventId}/games/playoffs?bracket=${this.props.bracketNumber}`)
+        await axiosInstance.get(`exposure/events/${this.props.eventId}/games/playoffs/chunks/${this.props.bracketNumber}`)
             .then(response => {
                 let idx = 0
                 response.data.forEach((game) => {
