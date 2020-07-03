@@ -9,7 +9,7 @@ const Logo = (props) => {
 
     const logoStyle = {
         width: `${width / 5.4}px`,
-        right: `${width / 1.26}px`,
+        right: `${width / 300}px`,
         bottom: `${width / 1.85}px`
     }
 

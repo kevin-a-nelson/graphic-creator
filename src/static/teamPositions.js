@@ -26,17 +26,55 @@ const teamRecord = {
 }
 
 const tenPools = {
-    teamNames: {
-        fontSize: '0.3em',
+    teamName: {
+        fontSize: '0.4em',
+        fontWeight: 300,
         color: 'white',
-    }
+        fontFamily: 'Bebas Neue',
+        fontStyle: 'italic',
+    },
+    poolLabel: {
+        fontSize: '0.5em',
+        fontWeight: 'bold',
+        color: 'white',
+        fontFamily: 'Fjalla One',
+        textTransform: 'uppercase'
+    },
 }
+
+
+function addPercentage(position, increment) {
+    return `${position + increment}%`
+
+}
+
+
+
+// 5.3
 
 export default {
     "TenPools": [
         // Pool 2
-        { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
-        { top: "29%", left: "25%", name: "Team Name 2", style: tenPools.teamNames },
+        { top: addPercentage(5.0, 5.3 * 0), left: "16.5%", name: "Pool 1", style: tenPools.poolLabel, isConstant: true },
+        { top: addPercentage(6.3, 5.3 * 1), left: "3.5%", name: "Team Name 2", style: tenPools.teamName },
+        { top: addPercentage(6.3, 5.3 * 2), left: "3.5%", name: "Team Name 2", style: tenPools.teamName },
+        { top: addPercentage(6.3, 5.3 * 3), left: "3.5%", name: "Team Name 1", style: tenPools.teamName },
+        { top: addPercentage(6.3, 5.3 * 4), left: "3.5%", name: "Team Name 1", style: tenPools.teamName },
+        // { top: "60%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
+        // { top: "5%", left: "4%", name: "Team Name 1", style: tenPools.teamNames },
+        // { top: "29%", left: "4%", name: "Team Name 2", style: tenPools.teamNames },
     ],
     "SinglePool": [
         // First Round

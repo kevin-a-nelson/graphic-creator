@@ -3,7 +3,6 @@ import './graphic.scss'
 import Bracket from '../bracket/Bracket'
 import Background from '../background/Background'
 import Logo from '../logo/Logo'
-import Title from '../title/Title'
 import TeamNames from '../teamNames/TeamNames'
 
 export default class Graphic extends React.Component {
@@ -14,9 +13,7 @@ export default class Graphic extends React.Component {
             logo,
             width,
             height,
-            eventId,
             teams,
-            title
         } = this.props;
 
         const graphicStyle = {

@@ -6,6 +6,7 @@ import Logo from './assets/2020CircuitLogos/A-TownShowdown.png'
 import SideBar from './components/sideBar/SideBar'
 import Graphic from './components/graphic/Graphic'
 import teams from './static/teamPositions'
+import './assets/fonts.css'
 
 class App extends React.Component {
 
@@ -18,9 +19,10 @@ class App extends React.Component {
       logo: Logo,
       width: 960,
       height: 540,
-      eventId: 0,
+      eventId: null,
       title: "17U Pool 1 Standings",
       teams: teams['TenPools'],
+      division: null,
     }
   }
 
@@ -35,6 +37,7 @@ class App extends React.Component {
     const setTeams = (teams) => { this.setState({ teams }) }
     const setTitle = (title) => { this.setState({ title }) }
     const setBracketNumber = (bracketNumber) => { this.setState({ bracketNumber }) }
+    const setDivision = (division) => { this.setState({ division }) }
 
     return (
       <div className="app-container">
@@ -53,11 +56,13 @@ class App extends React.Component {
             setTeams={setTeams}
             bracketNumber={this.state.bracketNumber}
             setBracketNumber={setBracketNumber}
+            division={this.state.division}
+            setDivision={setDivision}
           />
+
           <Graphic
             eventId={this.state.eventId}
-            teams={this.state.teams}
-            backgroundImage={this.state.backgroundImage}
+            teams={this.state.teams} backgroundImage={this.state.backgroundImage}
             bracketType={this.state.bracketType}
             logo={this.state.logo}
             width={this.state.width}

@@ -17,7 +17,7 @@ class TeamNames extends React.Component {
         return (
             this.props.teams.map((team) => {
                 return (
-                    <div className="team-name" style={teamNameStyle(team)}>
+                    <div class="example" style={teamNameStyle(team)}>
                         {team.name}
                     </div >
                 )

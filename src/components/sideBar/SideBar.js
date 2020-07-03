@@ -4,6 +4,7 @@ import backgroundImageOptions from '../../options/backgroundOptions'
 import logoOptions from '../../options/logoOptions'
 import eventOptions from '../../options/eventOptions'
 import bracketOptions from '../../options/bracketOptions'
+import divisionOptions from '../../options/divisionOptions'
 import bracketNumberOptions from '../../options/bracketNumber'
 import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css'
@@ -42,20 +43,38 @@ class SideBar extends React.Component {
     }
 
     async getNewTeams() {
+        if (!this.props.division || !this.props.eventId) {
+            return;
+        }
         const newTeams = this.props.teams
-        await axiosInstance.get(`exposure/events/${this.props.eventId}/games/playoffs/chunks/${this.props.bracketNumber}`)
+        const url = `exposure/events/${this.props.eventId}/division/${this.props.division}/pools`
+        const teamPools = await axiosInstance.get(url)
             .then(response => {
-                let idx = 0
-                response.data.forEach((game) => {
-                    newTeams[idx].name = game.AwayTeam.Name
-                    newTeams[idx + 1].name = game.HomeTeam.Name
-                    idx += 2
-                })
+                return response.data
             })
-            .catch(error => console.log(error))
-
+        let teamNames = Object.values(teamPools)
+        teamNames = teamNames.flat(1)
+        for (let i = 0; i < newTeams.length; i++) {
+            if (!newTeams[i].isConstant) {
+                newTeams[i].name = teamNames[i];
+            }
+        }
         this.props.setTeams(newTeams)
     }
+
+    setTeams() {
+        const newTeams = this.getNewTeams();
+        console.log(newTeams)
+        let teamNames = Object.values(newTeams)
+        teamNames = teamNames.flat(1)
+        for (let i = 0; i < newTeams.length; i++) {
+            if (!newTeams[0].isConstant) {
+                newTeams[i].name = teamNames[i];
+            }
+        }
+    }
+
+
 
     async onEventChange(option) {
 
@@ -78,6 +97,12 @@ class SideBar extends React.Component {
             'Silver Bracket',
             'Bronze Bracket'
         ][this.props.bracketNumber - 1]
+    }
+
+    async onDivisionChange(option) {
+        const newDivision = option[0].value
+        await this.props.setDivision(newDivision)
+        this.getNewTeams()
     }
 
     onDownload(title, bracketNumber) {
@@ -121,6 +146,13 @@ class SideBar extends React.Component {
                         onChange={this.onBracketChange.bind(this)}
                     />
                      */}
+
+                    <p>Division</p>
+                    <Select
+                        className="select"
+                        options={divisionOptions}
+                        onChange={this.onDivisionChange.bind(this)}
+                    />
 
                     <p>Bracket Name</p>
                     <Select
