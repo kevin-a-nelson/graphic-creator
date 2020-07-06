@@ -22,7 +22,7 @@ class App extends React.Component {
       eventId: null,
       event: null,
       title: "17U Pool 1 Standings",
-      teams: teams['TenPools'],
+      teams: teams['SinglePool'],
       division: "17U",
       divisions: [],
       pool: null,

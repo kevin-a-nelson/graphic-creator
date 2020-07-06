@@ -37,7 +37,7 @@ const singlePool = {
         fontFamily: 'Fjalla One',
     },
     eventName: {
-        fontSize: '1.5em',
+        fontSize: '1.1em',
         fontWeight: 'bold',
         color: 'white',
         fontFamily: 'Fjalla One',
@@ -62,7 +62,7 @@ const tenPools = {
         fontStyle: 'italic',
     },
     eventName: {
-        fontSize: '0.7em',
+        fontSize: '0.6em',
         fontWeight: 'bold',
         color: 'white',
         fontFamily: 'Fjalla One',
@@ -167,16 +167,16 @@ export default {
         bracketImage: SinglePoolBracket,
         logo: {
             width: 5.4,
-            right: 3.4,
+            right: 1.25,
             bottom: 2.1,
         },
         text: [
             // Constants
-            // Pool 1
-            { top: '11.6%', left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
-            { top: `${11.6 + 5.3}%`, left: '3.5%', name: 'Team Name 2', style: tenPools.teamName },
-            { top: `${11.6 + 5.3 * 2}%`, left: '3.5%', name: 'Team Name 3', style: tenPools.teamName },
-            { top: `${11.6 + 5.3 * 3}%`, left: '3.5%', name: 'Team Name 4', style: tenPools.teamName },
+            { top: `${11}%`, left: '25%', name: 'Prep Hoops $HardWorkSZN KICK Off', style: singlePool.eventName },
+            { top: '43.5%', left: '40.5%', name: 'Team Name 1', style: singlePool.teamName },
+            { top: `${55}%`, left: '40.5%', name: 'Team Name 2', style: singlePool.teamName },
+            { top: `${66.3}%`, left: '40.5%', name: 'Team Name 3', style: singlePool.teamName },
+            { top: `${78}%`, left: '40.5%', name: 'Team Name 4', style: singlePool.teamName },
         ],
     },
 }

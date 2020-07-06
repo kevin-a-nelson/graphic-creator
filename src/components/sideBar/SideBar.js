@@ -33,10 +33,8 @@ class SideBar extends React.Component {
         this.props.setBracketImage(newBracket);
     }
 
-    onLogoChange(option) {
-        let newLogo = option[0].value;
-        this.props.setLogoImage(newLogo);
-        console.log(newLogo);
+    onLogoChange(selectedOption) {
+        this.props.setLogoImage(selectedOption.value);
     }
 
     onSizeChange(value) {
