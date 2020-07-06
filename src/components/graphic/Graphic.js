@@ -34,10 +34,11 @@ export default class Graphic extends React.Component {
                     />
                      */}
                     <Bracket
-                        bracketType={bracketType}
+                        bracketType={teams.bracketImage}
                     />
                     <Logo
                         width={width}
+                        logoDim={teams.logo}
                         logo={logo}
                     />
                     <TeamNames

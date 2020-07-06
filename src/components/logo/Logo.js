@@ -5,22 +5,20 @@ import './logo.scss'
 
 const Logo = (props) => {
 
-    const { width, logo } = props
+    const { width, logo, logoDim } = props
 
     const logoStyle = {
-        width: `${width / 5.4}px`,
-        right: `${width / 300}px`,
-        bottom: `${width / 1.85}px`
+        width: `${width / logoDim.width}px`,
+        right: `${width / logoDim.right}px`,
+        bottom: `${width / logoDim.bottom}px`
     }
 
     return (
-        <Draggable>
-            <div className="logo" style={logoStyle}>
-                <div className="img-container">
-                    <img src={logo} alt="logo" />
-                </div>
+        <div className="logo" style={logoStyle}>
+            <div className="img-container">
+                <img src={logo} alt="logo" />
             </div>
-        </Draggable>
+        </div>
     )
 }
 

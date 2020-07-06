@@ -1,22 +1,25 @@
 import React from 'react';
-import Select from 'react-dropdown-select';
+// import Select from 'react-dropdown-select';
+import Select from 'react-select';
 import backgroundImageOptions from '../../options/backgroundOptions'
 import logoOptions from '../../options/logoOptions'
 import eventOptions from '../../options/eventOptions'
-import bracketOptions from '../../options/bracketOptions'
-import divisionOptions from '../../options/divisionOptions'
-import bracketNumberOptions from '../../options/bracketNumber'
-import InputRange from 'react-input-range';
 import 'react-input-range/lib/css/index.css'
 import axiosInstance from '../../AxiosInstance'
 import htmlToImage from 'html-to-image';
 import './sidebar.scss'
+import teams from '../../static/teamPositions'
 
 class SideBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             size: 1000,
+            selectedEvent: [],
+            selectedDivision: [],
+            selectedPool: [],
+            divisions: [],
+            pools: [],
         }
     }
 
@@ -42,53 +45,70 @@ class SideBar extends React.Component {
         this.props.setHeight(540 * (value / 1000));
     }
 
-    async getNewTeams() {
-        if (!this.props.division || !this.props.eventId) {
-            return;
-        }
-        const newTeams = this.props.teams
-        const url = `exposure/events/${this.props.eventId}/division/${this.props.division}/pools`
-        const teamPools = await axiosInstance.get(url)
+    async fetchEvent() {
+        const url = `exposure/events/${this.props.eventId}`
+        const event = await axiosInstance.get(url)
             .then(response => {
                 return response.data
             })
-        let teamNames = Object.values(teamPools)
+        await this.props.setEvent(event)
+        this.setNewTeams()
+    }
+
+    async setNewTeams() {
+        const event = this.props.event
+        const divisions = Object.keys(event.Divisions)
+        const division = this.state.selectedDivision.value || divisions[divisions.length - 1]
+        const pools = Object.keys(event.Divisions[division].Pools)
+        const pool = this.state.selectedPool.value || "All"
+        const eventName = event.Name
+        let teamNames = Object.values(event.Divisions[division])
+        teamNames = teamNames[0]
+        teamNames = Object.values(teamNames)
         teamNames = teamNames.flat(1)
-        for (let i = 0; i < newTeams.length; i++) {
-            if (!newTeams[i].isConstant) {
-                newTeams[i].name = teamNames[i];
+
+        let teamNamesIdx = 0
+        let newTeamsIdx = 0
+
+        const newTeams = pool === "All" ? teams["TenPools"] : teams["SinglePool"]
+
+        newTeams.text[newTeamsIdx].name = eventName
+
+        newTeamsIdx += 1
+
+        while (newTeamsIdx < newTeams.text.length) {
+            if (newTeams.text[newTeamsIdx].isConstant) {
+                newTeamsIdx += 1
+                continue
             }
+            newTeams.text[newTeamsIdx].name = teamNames[teamNamesIdx]
+            newTeamsIdx += 1
+            teamNamesIdx += 1
         }
         this.props.setTeams(newTeams)
+
+        this.setState({ divisions })
+        this.setState({ pools })
+        this.setState({ selectedDivision: { label: division, value: division } })
+        this.setState({ selectedPool: { label: pool, value: pool } })
     }
 
-    setTeams() {
-        const newTeams = this.getNewTeams();
-        console.log(newTeams)
-        let teamNames = Object.values(newTeams)
-        teamNames = teamNames.flat(1)
-        for (let i = 0; i < newTeams.length; i++) {
-            if (!newTeams[0].isConstant) {
-                newTeams[i].name = teamNames[i];
-            }
-        }
-    }
-
-
-
-    async onEventChange(option) {
-
-        const newEventId = option[0].value;
-        const newEventTitle = option[0].label;
-        await this.props.setTitle(newEventTitle)
+    async onEventChange(selectedOption) {
+        this.setState({ selectedEvent: selectedOption })
+        const newEventId = selectedOption.value;
         await this.props.setEventId(newEventId)
-        this.getNewTeams()
+        this.fetchEvent()
     }
 
     async onBracketNumberChange(option) {
         const newBracketNumber = option[0].value;
         await this.props.setBracketNumber(newBracketNumber)
-        this.getNewTeams()
+        this.setNewTeams()
+    }
+
+    async onPoolChange(selectedOption) {
+        await this.setState({ selectedPool: selectedOption })
+        this.setNewTeams()
     }
 
     bracketName() {
@@ -99,10 +119,9 @@ class SideBar extends React.Component {
         ][this.props.bracketNumber - 1]
     }
 
-    async onDivisionChange(option) {
-        const newDivision = option[0].value
-        await this.props.setDivision(newDivision)
-        this.getNewTeams()
+    async onDivisionChange(selectedOption) {
+        await this.setState({ selectedDivision: selectedOption })
+        this.setNewTeams()
     }
 
     onDownload(title, bracketNumber) {
@@ -123,9 +142,48 @@ class SideBar extends React.Component {
     }
 
     render() {
+
+        const { divisions, pools } = this.state
+
+        let divisionOptions = []
+        if (divisions !== []) {
+            divisionOptions = divisions.map(division => ({ label: division, value: division }))
+        }
+
+        let poolOptions = []
+        if (pools !== []) {
+            poolOptions = pools.map(pool => ({ label: pool, value: pool }))
+            poolOptions.unshift({
+                label: "All", value: "All"
+            })
+        }
+
         return (
             <div className="sidebar-container">
                 <div className="sidebar">
+                    <p>Events</p>
+                    <Select
+                        className="select"
+                        options={eventOptions}
+                        onChange={this.onEventChange.bind(this)}
+                        value={this.state.selectedEvent}
+                    />
+                    <p>Division</p>
+                    <Select
+                        value={this.state.selectedDivision}
+                        className="select"
+                        options={divisionOptions}
+                        onChange={this.onDivisionChange.bind(this)}
+                        disabled={!this.props.division}
+                    />
+                    <p>Pools</p>
+                    <Select
+                        value={this.state.selectedPool}
+                        className="select"
+                        options={poolOptions}
+                        onChange={this.onPoolChange.bind(this)}
+                        disabled={!this.props.pool}
+                    />
                     <p>Background Image</p>
                     <Select
                         className="select"
@@ -147,26 +205,14 @@ class SideBar extends React.Component {
                     />
                      */}
 
-                    <p>Division</p>
-                    <Select
-                        className="select"
-                        options={divisionOptions}
-                        onChange={this.onDivisionChange.bind(this)}
-                    />
 
-                    <p>Bracket Name</p>
+                    {/* <p>Bracket Name</p>
                     <Select
                         className="select"
                         options={bracketNumberOptions}
                         onChange={this.onBracketNumberChange.bind(this)}
-                    />
+                    /> */}
 
-                    <p>Events</p>
-                    <Select
-                        className="select"
-                        options={eventOptions}
-                        onChange={this.onEventChange.bind(this)}
-                    />
                     {/* <p>Size</p>
                     <InputRange
                         maxValue={1000}
