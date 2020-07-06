@@ -135,7 +135,7 @@ class SideBar extends React.Component {
     }
 
     async onDivisionChange(selectedOption) {
-        await this.setState({ selectedPool: { label: 1, value: 1 } })
+        await this.setState({ selectedPool: { label: 'All', value: 'All' } })
         await this.setState({ selectedDivision: selectedOption })
         this.setNewTeams()
     }
