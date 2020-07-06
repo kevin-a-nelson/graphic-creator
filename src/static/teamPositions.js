@@ -89,43 +89,6 @@ function add(position, increment) {
 // 5.3
 
 export default {
-
-    "SinglePool": {
-        // Event Name
-        bracketImage: TenPoolBracket,
-        logo: {
-            width: 5.4,
-            right: 3.4,
-            bottom: 2.1,
-        },
-        text: [
-            { top: '5%', left: "7%", name: "6th Seed" },
-            { top: "66.7%", left: "7%", name: "11th Seed" },
-            { top: "72%", left: "7%", name: "7th Seed" },
-            { top: "78%", left: "7%", name: "10th Seed" },
-            { top: "83.7%", left: "7%", name: "9th Seed" },
-            { top: "89%", left: "7%", name: "8th Seed" },
-            // Second Round
-            { top: "7.5%", left: "24%", name: "Winner of Match" },
-            { top: "19%", left: "24%", name: "Winner of Match" },
-            { top: "30%", left: "24%", name: "Winner of Match" },
-            { top: "41%", left: "23%", name: "Winner of Match" },
-            { top: "52%", left: "23%", name: "Winner of Match" },
-            { top: "63.5%", left: "22%", name: "Winner of Match" },
-            { top: "75%", left: "22%", name: "Winner of Match" },
-            { top: "86%", left: "21%", name: "Winner of Match" },
-            // Third Round
-            { top: "12.4%", left: "41%", name: "Winner of Match" },
-            { top: "35%", left: "41%", name: "Winner of Match" },
-            { top: "58%", left: "40%", name: "Winner of Match" },
-            { top: "80.5%", left: "39%", name: "Winner of Match" },
-            // Fourth Round
-            { top: "24%", left: "56%", name: "Winner of Match" },
-            { top: "69%", left: "56%", name: "Winner of Match" },
-            // Champion
-            { top: "47%", left: "73%", name: "Winner of Match" },
-        ],
-    },
     "TenPools": {
         // Event Name
         bracketImage: TenPoolBracket,
@@ -135,31 +98,85 @@ export default {
             bottom: 2.1,
         },
         text: [
-            { top: '5%', left: "7%", name: "6th Seed" },
-            { top: "66.7%", left: "7%", name: "11th Seed" },
-            { top: "72%", left: "7%", name: "7th Seed" },
-            { top: "78%", left: "7%", name: "10th Seed" },
-            { top: "83.7%", left: "7%", name: "9th Seed" },
-            { top: "89%", left: "7%", name: "8th Seed" },
-            // Second Round
-            { top: "7.5%", left: "24%", name: "Winner of Match" },
-            { top: "19%", left: "24%", name: "Winner of Match" },
-            { top: "30%", left: "24%", name: "Winner of Match" },
-            { top: "41%", left: "23%", name: "Winner of Match" },
-            { top: "52%", left: "23%", name: "Winner of Match" },
-            { top: "63.5%", left: "22%", name: "Winner of Match" },
-            { top: "75%", left: "22%", name: "Winner of Match" },
-            { top: "86%", left: "21%", name: "Winner of Match" },
-            // Third Round
-            { top: "12.4%", left: "41%", name: "Winner of Match" },
-            { top: "35%", left: "41%", name: "Winner of Match" },
-            { top: "58%", left: "40%", name: "Winner of Match" },
-            { top: "80.5%", left: "39%", name: "Winner of Match" },
-            // Fourth Round
-            { top: "24%", left: "56%", name: "Winner of Match" },
-            { top: "69%", left: "56%", name: "Winner of Match" },
-            // Champion
-            { top: "47%", left: "73%", name: "Winner of Match" },
+            // Constants
+            { top: '8%', left: '27.5%', name: 'Event Name', style: tenPools.eventName, isConstant: true },
+            { top: `${5.2}%`, left: '17%', name: 'Pool 1', style: tenPools.poolLabel, isConstant: true },
+            { top: `${37}%`, left: '17%', name: 'Pool 2', style: tenPools.poolLabel, isConstant: true },
+            { top: `${68.9}%`, left: '17%', name: 'Pool 3', style: tenPools.poolLabel, isConstant: true },
+            { top: `${37}%`, left: '41.2%', name: 'Pool 4', style: tenPools.poolLabel, isConstant: true },
+            { top: `${68.9}%`, left: '41.3%', name: 'Pool 5', style: tenPools.poolLabel, isConstant: true },
+            { top: `${37}%`, left: '65.3%', name: 'Pool 6', style: tenPools.poolLabel, isConstant: true },
+            { top: `${68.9}%`, left: '65.5%', name: 'Pool 7', style: tenPools.poolLabel, isConstant: true },
+            { top: `${5.2}%`, left: '90%', name: 'Pool 8', style: tenPools.poolLabel, isConstant: true },
+            { top: `${37}%`, left: '90%', name: 'Pool 9', style: tenPools.poolLabel, isConstant: true },
+            { top: `${68.9}%`, left: '89%', name: 'Pool 10', style: tenPools.poolLabel, isConstant: true },
+            // Pool 1
+            { top: '11.6%', left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3 * 2}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3 * 3}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 2
+            { top: `${43.7}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3 * 2 - 0.3}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3 * 3 - 0.4}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 3
+            { top: `${75.2}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.2 + 5.3}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.2 + 5.3 * 2}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.2 + 5.3 * 3}%`, left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 4
+            { top: `${75.3}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3 * 2 - 0.3}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3 * 3 - 0.4}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 5
+            { top: `${43.7}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3 * 2 - 0.3}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3 * 3 - 0.4}%`, left: '27.9%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 6
+            { top: `${75.3}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3 * 2 - 0.3}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3 * 3 - 0.4}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 7
+            { top: `${43.7}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3 * 2 - 0.3}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.7 + 5.3 * 3 - 0.4}%`, left: '52%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 8
+            { top: `${11.6}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3 * 2 - 0.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3 * 3 - 0.4}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 9
+            { top: `${43.6}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.6 + 5.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.6 + 5.3 * 2 - 0.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${43.6 + 5.3 * 3 - 0.4}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            // Pool 10
+            { top: `${75.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3 * 2 - 0.3}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${75.3 + 5.3 * 3 - 0.4}%`, left: '76.7%', name: 'Team Name 1', style: tenPools.teamName },
         ],
-    }
+    },
+    "SinglePool": {
+        // Event Name
+        bracketImage: SinglePoolBracket,
+        logo: {
+            width: 5.4,
+            right: 3.4,
+            bottom: 2.1,
+        },
+        text: [
+            // Constants
+            // Pool 1
+            { top: '11.6%', left: '3.5%', name: 'Team Name 1', style: tenPools.teamName },
+            { top: `${11.6 + 5.3}%`, left: '3.5%', name: 'Team Name 2', style: tenPools.teamName },
+            { top: `${11.6 + 5.3 * 2}%`, left: '3.5%', name: 'Team Name 3', style: tenPools.teamName },
+            { top: `${11.6 + 5.3 * 3}%`, left: '3.5%', name: 'Team Name 4', style: tenPools.teamName },
+        ],
+    },
 }
