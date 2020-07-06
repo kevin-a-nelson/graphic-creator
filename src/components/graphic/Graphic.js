@@ -48,7 +48,7 @@ export default class Graphic extends React.Component {
                         backgroundImage={backgroundImage}
                     />
                 </div>
-            </div>
+            </div >
         )
     }
 }

@@ -9,6 +9,7 @@ import axiosInstance from '../../AxiosInstance'
 import htmlToImage from 'html-to-image';
 import './sidebar.scss'
 import teams from '../../static/teamPositions'
+import domtoimage from 'dom-to-image';
 
 class SideBar extends React.Component {
     constructor(props) {
@@ -23,9 +24,9 @@ class SideBar extends React.Component {
         }
     }
 
-    onBackgroundChange(option) {
-        let newBackground = option[0].value;
-        this.props.setBackgroundImage(newBackground);
+    onBackgroundChange(selectedOption) {
+        let newBackground = selectedOption;
+        this.props.setBackgroundImage(newBackground.value);
     }
 
     onBracketChange(option) {
@@ -74,17 +75,33 @@ class SideBar extends React.Component {
 
         newTeamsIdx += 1
 
-        while (newTeamsIdx < newTeams.text.length) {
-            if (newTeams.text[newTeamsIdx].isConstant) {
+        if (pool === "All") {
+            while (newTeamsIdx < newTeams.text.length) {
+                if (newTeams.text[newTeamsIdx].isConstant) {
+                    newTeamsIdx += 1
+                    continue
+                }
+                newTeams.text[newTeamsIdx].name = teamNames[teamNamesIdx]
                 newTeamsIdx += 1
-                continue
+                teamNamesIdx += 1
             }
-            newTeams.text[newTeamsIdx].name = teamNames[teamNamesIdx]
+        } else {
+            const poolLetter = String.fromCharCode(pool + 64);
+            newTeams.text[newTeamsIdx].name = `Pool ${pool}`;
             newTeamsIdx += 1
-            teamNamesIdx += 1
+            const teamNames = event.Divisions[this.state.selectedDivision.value].Pools[poolLetter];
+            while (newTeamsIdx < newTeams.text.length) {
+                if (newTeams.text[newTeamsIdx].isConstant) {
+                    newTeamsIdx += 1
+                    continue
+                }
+                newTeams.text[newTeamsIdx].name = teamNames[teamNamesIdx]
+                newTeamsIdx += 1
+                teamNamesIdx += 1
+            }
         }
-        this.props.setTeams(newTeams)
 
+        this.props.setTeams(newTeams)
         this.setState({ divisions })
         this.setState({ pools })
         this.setState({ selectedDivision: { label: division, value: division } })
@@ -118,6 +135,7 @@ class SideBar extends React.Component {
     }
 
     async onDivisionChange(selectedOption) {
+        await this.setState({ selectedPool: { label: 1, value: 1 } })
         await this.setState({ selectedDivision: selectedOption })
         this.setNewTeams()
     }
@@ -130,7 +148,7 @@ class SideBar extends React.Component {
             'Bronze Bracket'
         ][bracketNumber]
 
-        htmlToImage.toJpeg(document.getElementById('graphic'), { quality: 0.95 })
+        domtoimage.toJpeg(document.getElementById('graphic'), { quality: 0.95 })
             .then(function (dataUrl) {
                 var link = document.createElement('a');
                 link.download = `${title} - ${bracketName}.jpeg`;
@@ -150,7 +168,7 @@ class SideBar extends React.Component {
 
         let poolOptions = []
         if (pools !== []) {
-            poolOptions = pools.map(pool => ({ label: pool, value: pool }))
+            poolOptions = pools.map(pool => ({ label: pool.charCodeAt(0) - 64, value: pool.charCodeAt(0) - 64 }))
             poolOptions.unshift({
                 label: "All", value: "All"
             })
@@ -218,7 +236,7 @@ class SideBar extends React.Component {
                         value={this.state.size}
                         onChange={this.onSizeChange.bind(this)}
                     /> */}
-                    <button className="btn-download" onClick={() => this.onDownload(this.props.title, this.props.bracketNumber)}>Download</button>
+                    {/* <button className="btn-download" onClick={() => this.onDownload(this.props.title, this.props.bracketNumber)}>Download</button> */}
                 </div>
             </div>
         )

@@ -37,7 +37,7 @@ const singlePool = {
         fontFamily: 'Fjalla One',
     },
     eventName: {
-        fontSize: '1.1em',
+        fontSize: '0.9em',
         fontWeight: 'bold',
         color: 'white',
         fontFamily: 'Fjalla One',
@@ -171,8 +171,8 @@ export default {
             bottom: 2.1,
         },
         text: [
-            // Constants
-            { top: `${11}%`, left: '25%', name: 'Prep Hoops $HardWorkSZN KICK Off', style: singlePool.eventName },
+            { top: `${11}%`, left: '25%', name: 'Prep Hoops #HardWorkSZN KICK Off', style: singlePool.eventName },
+            { top: `${29.2}%`, left: '23%', name: 'Pool 1', style: singlePool.poolLabel },
             { top: '43.5%', left: '40.5%', name: 'Team Name 1', style: singlePool.teamName },
             { top: `${55}%`, left: '40.5%', name: 'Team Name 2', style: singlePool.teamName },
             { top: `${66.3}%`, left: '40.5%', name: 'Team Name 3', style: singlePool.teamName },
