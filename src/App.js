@@ -9,7 +9,6 @@ import teams from './static/teamPositions'
 import './assets/fonts.css'
 
 class App extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
