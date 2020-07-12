@@ -1,5 +1,6 @@
 import React from 'react'
 import "./teamNames.scss"
+import EditableLabel from 'react-editable-label';
 
 
 class TeamNames extends React.Component {
@@ -17,9 +18,13 @@ class TeamNames extends React.Component {
         return (
             this.props.teams.text.map((team) => {
                 return (
-                    <div class="example" style={teamNameStyle(team)}>
+                    <div style={teamNameStyle(team)}>
                         {team.name}
-                    </div >
+                        {/* <EditableLabel */}
+                        {/* initialValue={team.name} */}
+                        {/* save={value => { console.log(`Saving ${value}`) }} */}
+                        {/* /> */}
+                    </div>
                 )
             })
         )

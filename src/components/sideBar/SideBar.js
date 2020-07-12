@@ -61,10 +61,6 @@ class SideBar extends React.Component {
         const pools = Object.keys(event.Divisions[division].Pools)
         const pool = this.state.selectedPool.value || "All"
         const eventName = event.Name
-        let teamNames = Object.values(event.Divisions[division].Pools)
-        teamNames = teamNames.map(teams => teams.map(team => team.Name))
-        // teamNames = Object.values(teamNames).map(team => { return team.Name })
-        teamNames = teamNames.flat(1)
 
         let teamNamesIdx = 0
         let newTeamsIdx = 0
@@ -76,6 +72,9 @@ class SideBar extends React.Component {
         newTeamsIdx += 1
 
         if (pool === "All") {
+            let teamNames = Object.values(event.Divisions[division].Pools)
+            teamNames = teamNames.map(teams => teams.map(team => team.Name))
+            teamNames = teamNames.flat(1)
             while (newTeamsIdx < newTeams.text.length) {
                 if (newTeams.text[newTeamsIdx].isConstant) {
                     newTeamsIdx += 1
@@ -89,7 +88,11 @@ class SideBar extends React.Component {
             const poolLetter = String.fromCharCode(pool + 64);
             newTeams.text[newTeamsIdx].name = `Pool ${pool}`;
             newTeamsIdx += 1
-            const teamNames = event.Divisions[this.state.selectedDivision.value].Pools[poolLetter].map(team => team.Name);
+            let teamNames = event.Divisions[this.state.selectedDivision.value].Pools[poolLetter].map(team => [
+                `${team.Wins} - ${team.Loses}`,
+                team.Name]);
+
+            teamNames = teamNames.flat(1)
             while (newTeamsIdx < newTeams.text.length) {
                 if (newTeams.text[newTeamsIdx].isConstant) {
                     newTeamsIdx += 1
