@@ -51,6 +51,10 @@ const singlePool = {
         fontFamily: 'Fjalla One',
         textTransform: 'uppercase',
     },
+    teamRecord: {
+        fontSize: '0.5em',
+        color: 'white',
+    }
 }
 
 const tenPools = {
@@ -173,6 +177,7 @@ export default {
         text: [
             { top: `${11}%`, left: '25%', name: 'Prep Hoops #HardWorkSZN KICK Off', style: singlePool.eventName },
             { top: `${29.2}%`, left: '23%', name: 'Pool 1', style: singlePool.poolLabel },
+            { top: `${55}%`, left: '23%', name: '0 - 0', style: singlePool.teamRecord, isConstant: true },
             { top: '43.5%', left: '40.5%', name: 'Team Name 1', style: singlePool.teamName },
             { top: `${55}%`, left: '40.5%', name: 'Team Name 2', style: singlePool.teamName },
             { top: `${66.3}%`, left: '40.5%', name: 'Team Name 3', style: singlePool.teamName },
