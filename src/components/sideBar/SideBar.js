@@ -5,12 +5,63 @@ import backgroundImageOptions from '../../options/backgroundOptions'
 import logoOptions from '../../options/logoOptions'
 import eventOptions from '../../options/eventOptions'
 import 'react-input-range/lib/css/index.css'
-import axiosInstance from '../../AxiosInstance'
-import htmlToImage from 'html-to-image';
+import myAxios from '../../AxiosInstance'
+// import htmlToImage from 'html-to-image';
 import './sidebar.scss'
 import teams from '../../static/teamPositions'
 import domtoimage from 'dom-to-image';
+// import puppeteer from 'puppeteer';
+import { useHistory } from "react-router-dom";
 
+function lzw_encode(s) {
+    var dict = {};
+    var data = (s + "").split("");
+    var out = [];
+    var currChar;
+    var phrase = data[0];
+    var code = 256;
+    for (var i = 1; i < data.length; i++) {
+        currChar = data[i];
+        if (dict[phrase + currChar] != null) {
+            phrase += currChar;
+        }
+        else {
+            out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
+            dict[phrase + currChar] = code;
+            code++;
+            phrase = currChar;
+        }
+    }
+    out.push(phrase.length > 1 ? dict[phrase] : phrase.charCodeAt(0));
+    for (var i = 0; i < out.length; i++) {
+        out[i] = String.fromCharCode(out[i]);
+    }
+    return out.join("");
+}
+function lzw_decode(s) {
+    var dict = {};
+    var data = (s + "").split("");
+    var currChar = data[0];
+    var oldPhrase = currChar;
+    var out = [currChar];
+    var code = 256;
+    var phrase;
+    for (var i = 1; i < data.length; i++) {
+        var currCode = data[i].charCodeAt(0);
+        if (currCode < 256) {
+            phrase = data[i];
+        }
+        else {
+            phrase = dict[currCode] ? dict[currCode] : (oldPhrase + currChar);
+        }
+        out.push(phrase);
+        currChar = phrase.charAt(0);
+        dict[code] = oldPhrase + currChar;
+        code++;
+        oldPhrase = phrase;
+    }
+    return out.join("");
+}
 class SideBar extends React.Component {
     constructor(props) {
         super(props);
@@ -46,7 +97,7 @@ class SideBar extends React.Component {
 
     async fetchEvent() {
         const url = `exposure/events/${this.props.eventId}`
-        const event = await axiosInstance.get(url)
+        const event = await myAxios.get(url)
             .then(response => {
                 return response.data
             })
@@ -129,35 +180,16 @@ class SideBar extends React.Component {
         this.setNewTeams()
     }
 
-    bracketName() {
-        return [
-            'Championship Bracket',
-            'Silver Bracket',
-            'Bronze Bracket'
-        ][this.props.bracketNumber - 1]
-    }
-
     async onDivisionChange(selectedOption) {
         await this.setState({ selectedPool: { label: 'All', value: 'All' } })
         await this.setState({ selectedDivision: selectedOption })
         this.setNewTeams()
     }
 
-    onDownload(title, bracketNumber) {
-
-        let bracketName = [
-            'Championship Bracket',
-            'Silver Bracket',
-            'Bronze Bracket'
-        ][bracketNumber]
-
-        domtoimage.toJpeg(document.getElementById('graphic'), { quality: 0.95 })
-            .then(function (dataUrl) {
-                var link = document.createElement('a');
-                link.download = `${title} - ${bracketName}.jpeg`;
-                link.href = dataUrl;
-                link.click();
-            });
+    async onDownload(title, bracketNumber) {
+        const teamNames = JSON.stringify(this.props.teams.text.map(text => text.name ? text.name.replace('#', '_HASHTAG') : ""))
+        let compressedTeamNames = lzw_encode(teamNames)
+        return
     }
 
     render() {
@@ -239,7 +271,9 @@ class SideBar extends React.Component {
                         value={this.state.size}
                         onChange={this.onSizeChange.bind(this)}
                     /> */}
-                    {/* <button className="btn-download" onClick={() => this.onDownload(this.props.title, this.props.bracketNumber)}>Download</button> */}
+                    <button className="btn-download" onClick={() => this.onDownload(this.props.title, this.props.bracketNumber)}>
+                        Download
+                    </button>
                 </div>
             </div>
         )
