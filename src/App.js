@@ -75,11 +75,12 @@ class App extends React.Component {
       event: null,
       title: "17U Pool 1 Standings",
       // teams: teams['TenPools'],
-      teams: teams['SinglePool'],
+      teams: teams['TenPools'],
       division: "17U",
       divisions: [],
       pool: null,
       pools: [],
+      showSideBar: true,
     }
   }
 
@@ -87,6 +88,7 @@ class App extends React.Component {
     const url_string = window.location.href
     const url = new URL(url_string);
     const compressedEvent = url.searchParams.get("event");
+    const display = url.searchParams.get("display") || "TenPools"
 
     if (!compressedEvent) {
       return
@@ -97,12 +99,12 @@ class App extends React.Component {
 
     event = JSON.parse(event)
 
-    console.log(event)
-    let newTeams = teams["TenPools"]
+    let newTeams = teams[display]
 
     for (let i = 0; i < newTeams.text.length; i++) {
       newTeams.text[i].name = event[i]
     }
+
     this.setState({ teams: newTeams })
   }
 
@@ -125,29 +127,32 @@ class App extends React.Component {
     return (
       <div className="app-container">
         <div className="app">
-          <SideBar
-            setBackgroundImage={setBackgroundImage}
-            setBracketImage={setBracketImage}
-            setLogoImage={setLogoImage}
-            setWidth={setWidth}
-            setHeight={setHeight}
-            event={this.state.event}
-            setEventId={setEventId} eventId={this.state.eventId}
-            setEvent={setEvent}
-            setTitle={setTitle} title={this.state.title}
-            teams={this.state.teams} setTeams={setTeams}
-            bracketNumber={this.state.bracketNumber} setBracketNumber={setBracketNumber}
-            // Division
-            division={this.state.division}
-            setDivision={setDivision}
-            divisions={this.state.divisions}
-            setDivisions={setDivisions}
-            // Pool
-            pool={this.state.pool}
-            pools={this.state.pools}
-            setPool={setPool}
-            setPools={setPools}
-          />
+          {
+            this.state.showSideBar ?
+              <SideBar
+                setBackgroundImage={setBackgroundImage}
+                setBracketImage={setBracketImage}
+                setLogoImage={setLogoImage}
+                setWidth={setWidth}
+                setHeight={setHeight}
+                event={this.state.event}
+                setEventId={setEventId} eventId={this.state.eventId}
+                setEvent={setEvent}
+                setTitle={setTitle} title={this.state.title}
+                teams={this.state.teams} setTeams={setTeams}
+                bracketNumber={this.state.bracketNumber} setBracketNumber={setBracketNumber}
+                // Division
+                division={this.state.division}
+                setDivision={setDivision}
+                divisions={this.state.divisions}
+                setDivisions={setDivisions}
+                // Pool
+                pool={this.state.pool}
+                pools={this.state.pools}
+                setPool={setPool}
+                setPools={setPools}
+              /> : null
+          }
 
           <Graphic
             eventId={this.state.eventId}

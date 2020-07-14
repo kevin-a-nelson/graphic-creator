@@ -11,6 +11,7 @@ import './sidebar.scss'
 import teams from '../../static/teamPositions'
 import domtoimage from 'dom-to-image';
 // import puppeteer from 'puppeteer';
+import axios from 'axios';
 import { useHistory } from "react-router-dom";
 
 function lzw_encode(s) {
@@ -187,9 +188,15 @@ class SideBar extends React.Component {
     }
 
     async onDownload(title, bracketNumber) {
+        // Get text that is currently displayed on screen
+        // The value of a param ends if their is a # so it needs to be replaced
         const teamNames = JSON.stringify(this.props.teams.text.map(text => text.name ? text.name.replace('#', '_HASHTAG') : ""))
+        // Compress url so that it doesn't exceed limit
         let compressedTeamNames = lzw_encode(teamNames)
-        return
+        const pool = this.state.selectedPool.value || "All"
+        const display = pool === "All" ? "TenPools" : "SinglePool"
+        const imageString = await myAxios.get(`/screenshot/?text=${compressedTeamNames}&display=${display}`).then(response => response.data.ImageString)
+        window.location.href = `data:application/octet-stream;base64,${imageString}`
     }
 
     render() {
@@ -235,18 +242,18 @@ class SideBar extends React.Component {
                         onChange={this.onPoolChange.bind(this)}
                         disabled={!this.props.pool}
                     />
-                    <p>Background Image</p>
+                    {/* <p>Background Image</p>
                     <Select
                         className="select"
                         options={backgroundImageOptions}
                         onChange={this.onBackgroundChange.bind(this)}
-                    />
-                    <p>Logo</p>
+                    /> */}
+                    {/* <p>Logo</p>
                     <Select
                         className="select"
                         options={logoOptions}
                         onChange={this.onLogoChange.bind(this)}
-                    />
+                    /> */}
                     {/* 
                     <p>Bracket Type</p>
                     <Select
