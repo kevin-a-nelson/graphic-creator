@@ -195,7 +195,10 @@ class SideBar extends React.Component {
         let compressedTeamNames = lzw_encode(teamNames)
         const pool = this.state.selectedPool.value || "All"
         const display = pool === "All" ? "TenPools" : "SinglePool"
-        const imageString = await myAxios.get(`/screenshot/?text=${compressedTeamNames}&display=${display}`).then(response => response.data.ImageString)
+        const imageString = await myAxios.post('/screenshot', {
+            text: compressedTeamNames,
+            display: display,
+        }).then(response => response.data.ImageString)
         window.location.href = `data:application/octet-stream;base64,${imageString}`
     }
 
