@@ -196,6 +196,7 @@ class SideBar extends React.Component {
         const pool = this.state.selectedPool.value || "All"
         const display = pool === "All" ? "TenPools" : "SinglePool"
         // const imageString = await axios.get(`http://localhost:4000/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
+        console.log()
         const imageString = await axios.get(`https://graphic-creator-screenshoter.herokuapp.com/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
 
         // const imageString = await axios.get(`http://localhost:8000/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
