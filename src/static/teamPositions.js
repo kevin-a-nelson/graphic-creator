@@ -63,6 +63,8 @@ const tenPools = {
         fontWeight: 300,
         color: 'white',
         fontFamily: 'Bebas Neue',
+        // fontFamily: 'Tangerine',
+        // fontFamily: 'Fjalla One',
         fontStyle: 'italic',
     },
     eventName: {
