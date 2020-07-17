@@ -195,10 +195,9 @@ class SideBar extends React.Component {
         let compressedTeamNames = lzw_encode(teamNames)
         const pool = this.state.selectedPool.value || "All"
         const display = pool === "All" ? "TenPools" : "SinglePool"
-        const imageString = await myAxios.post('/screenshot', {
-            text: compressedTeamNames,
-            display: display,
-        }).then(response => response.data.ImageString)
+        console.log(compressedTeamNames);
+        // const imageString = await axios.get(`http://localhost:4000/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
+        const imageString = await axios.get(`https://graphic-creator-screenshoter.herokuapp.com/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
         window.location.href = `data:application/octet-stream;base64,${imageString}`
     }
 

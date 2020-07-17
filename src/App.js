@@ -87,8 +87,9 @@ class App extends React.Component {
   componentDidMount() {
     const url_string = window.location.href
     const url = new URL(url_string);
-    const compressedEvent = url.searchParams.get("event");
+    const compressedEvent = url.searchParams.get("texts");
     const display = url.searchParams.get("display") || "TenPools"
+
 
     if (!compressedEvent) {
       return
@@ -96,6 +97,7 @@ class App extends React.Component {
 
     let event = lzw_decode(compressedEvent)
     event = event.replace("_HASHTAG", "#")
+
 
     event = JSON.parse(event)
 
