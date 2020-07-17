@@ -87,7 +87,7 @@ class App extends React.Component {
   componentDidMount() {
     const url_string = window.location.href
     const url = new URL(url_string);
-    const compressedEvent = url.searchParams.get("texts");
+    const compressedEvent = url.searchParams.get("event");
     const display = url.searchParams.get("display") || "TenPools"
 
 
