@@ -198,6 +198,7 @@ class SideBar extends React.Component {
         // const imageString = await axios.get(`http://localhost:4000/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
         console.log()
         const imageString = await axios.get(`https://graphic-creator-screenshoter.herokuapp.com/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
+        console.log(`https://graphic-creator-screenshoter.herokuapp.com/screenshots/${display}/${compressedTeamNames}`)
 
         // const imageString = await axios.get(`http://localhost:8000/screenshots/${display}/${compressedTeamNames}`).then(response => response.data.ImageString)
         // const imageString = await myAxios.get(`?event=${compressedTeamNames}&display=${display}`).then(response => response.data.imageString);
@@ -248,18 +249,18 @@ class SideBar extends React.Component {
                         onChange={this.onPoolChange.bind(this)}
                         disabled={!this.props.pool}
                     />
-                    {/* <p>Background Image</p>
+                    <p>Background Image</p>
                     <Select
                         className="select"
                         options={backgroundImageOptions}
                         onChange={this.onBackgroundChange.bind(this)}
-                    /> */}
-                    {/* <p>Logo</p>
+                    />
+                    <p>Logo</p>
                     <Select
                         className="select"
                         options={logoOptions}
                         onChange={this.onLogoChange.bind(this)}
-                    /> */}
+                    />
                     {/* 
                     <p>Bracket Type</p>
                     <Select
