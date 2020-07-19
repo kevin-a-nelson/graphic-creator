@@ -6,8 +6,9 @@ import Logo from "./assets/2020CircuitLogos/A-TownShowdown.png";
 import SideBar from "./components/sideBar/SideBar";
 import Graphic from "./components/graphic/Graphic";
 import teams from "./static/teamPositions";
-import Airtable from "airtable";
 import "./assets/fonts.css";
+import Axios from "axios";
+import keys from "./keys";
 
 // LZW-compress a string
 function lzw_encode(s) {
@@ -80,42 +81,25 @@ class App extends React.Component {
       pool: null,
       pools: [],
       showSideBar: true,
+      eventOptions: [],
     };
   }
 
-  componentDidMount() {
-    var base = new Airtable({ apiKey: "keyOT2x5PePVaWTvK" }).base(
-      "app7wKmHU19C84dVo"
-    );
-
-    base("Events")
-      .select({
-        // Selecting the first 3 records in Grid view:
-        maxRecords: 3,
-        view: "Grid view",
-      })
-      .eachPage(
-        function page(records, fetchNextPage) {
-          // This function (`page`) will get called for each page of records.
-
-          records.forEach(function (record) {
-            console.log("Retrieved", record.get("Event Id"));
-          });
-
-          // To fetch the next page of records, call `fetchNextPage`.
-          // If there are more records, `page` will get called again.
-          // If there are no more records, `done` will get called.
-          fetchNextPage();
-        },
-        function done(err) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        }
-      );
-
-    return;
+  async componentDidMount() {
+    const currentEvents = await Axios.get(
+      `https://api.airtable.com/v0/${keys.airTableEventsKey}/Events?api_key=${keys.airTableApiKey}`
+    ).then((response) => {
+      return response.data.records;
+    });
+    // console.log(currentEvents);
+    const newEventOptions = currentEvents.map((currentEvent) => {
+      return {
+        label: currentEvent.fields["Event Name"],
+        value: currentEvent.fields["Event Id"],
+      };
+    });
+    console.log(newEventOptions);
+    await this.setState({ eventOptions: newEventOptions });
     const url_string = window.location.href;
     const url = new URL(url_string);
     const compressedEvent = url.searchParams.get("event");
@@ -196,6 +180,7 @@ class App extends React.Component {
               event={this.state.event}
               setEventId={setEventId}
               eventId={this.state.eventId}
+              eventOptions={this.state.eventOptions}
               setEvent={setEvent}
               setTitle={setTitle}
               title={this.state.title}

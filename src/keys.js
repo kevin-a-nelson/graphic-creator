@@ -1,5 +1,4 @@
-
 export default {
-    apiKey: "0s909vSu9kdkDA",
-    secretKey: "99b9M99999U99h99ptKas93Mf99I9j9t",
-}
+  airTableApiKey: "keyMY6DG93rVebo5z",
+  airTableEventsKey: "app7wKmHU19C84dVo",
+};
